@@ -14,7 +14,7 @@ import com.novus.salat.annotations._
 import com.mongodb.casbah.Imports._
 import models.SalatImports._
 
-import scala.Math._
+import org.scala_tools.time.Imports._
 
 /**
  * Helper for pagination.
@@ -52,7 +52,7 @@ case class Classification(reqType: String, //ReqType,
 
 case class Requirement(@Key("_id") id: ObjectId = new ObjectId,
                        refId: String,
-                       version: BigInteger,
+                       version: BigDecimal,
                        title: String,
                        strength: Strength.Value = Strength.Shall,
                        classification: Classification,
