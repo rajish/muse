@@ -69,8 +69,8 @@ object ReqStatus extends Enumeration {
 }
 
 case class Classification(
-  reqType: ReqType.Value,
-  status: ReqStatus.Value,
+  reqType: ReqType.Value = ReqType.Functional,
+  status: ReqStatus.Value = ReqStatus.Proposed,
   packageName: String
 )
 
