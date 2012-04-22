@@ -13,11 +13,12 @@ object ApplicationBuild extends Build {
     val novusRels = "repo.novus rels" at "http://repo.novus.com/releases/"
 
     val appDependencies = Seq(
-      "com.mongodb.casbah" %% "casbah" % "2.1.5-1",
-      "com.novus" %% "salat-core" % "0.0.8-SNAPSHOT"
+      "se.radley" %% "play-plugins-salat" % "1.0.1"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
+      routesImport += "se.radley.plugin.salat.Binders._",
+      templatesImport += "org.bson.types.ObjectId",
       ensimeConfig := sexp(
         key(":only-include-in-index"), sexp(
           "controllers\\..*",

@@ -1,13 +1,11 @@
 package models
 
 import com.mongodb.casbah.Imports._
-import com.novus.salat._
-import com.novus.salat.annotations._
-import com.novus.salat.dao._
-import java.util.Date
-import models.SalatImports._
 import org.scala_tools.time.Imports._
 import play.api.Play.current
+import com.novus.salat._
+import se.radley.plugin.salat._
+import com.novus.salat.dao.{ SalatDAO, ModelCompanion }
 
 /**
  * Helper for pagination.
@@ -90,9 +88,9 @@ case class Requirement(
 )
 
 object Requirement extends ModelCompanion[Requirement, ObjectId] {
-  val collection = mongoCollection("requirements")
+  val collection = getCollection("requirements")
   val dao = new SalatDAO[Requirement, ObjectId](collection = collection) {
-    val children = new ChildCollection[Requirement, ObjectId](collection = mongoCollection("requirements"), parentIdField = "parentId"){}
+    val children = new ChildCollection[Requirement, ObjectId](collection = getCollection("requirements"), parentIdField = "parentId"){}
   }
 }
 
@@ -176,6 +174,6 @@ case class Project(
 ) extends TimeStamps
 
 object Project extends ModelCompanion[Project, ObjectId] {
-  val collection = mongoCollection("projects")
+  val collection = getCollection("projects")
   val dao = new SalatDAO[Project, ObjectId](collection = collection){}
 }
