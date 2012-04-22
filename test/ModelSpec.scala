@@ -18,7 +18,8 @@ class ModelSpec extends Specification {
   step {
     running(FakeApp) {
       Project.remove(MongoDBObject.empty)
-      val proj = Project("test1", "test project", Nil, Nil, Nil, Nil)
+      val req = Requirement("REQ1", 1, "First requirement", Strength.Shall, new Classification(packageName = "demo"), "Some description", Nil, new ObjectId, Nil, Nil)
+      val proj = Project("test1", "test project", req :: Nil, Nil, Nil, Nil)
       Project.insert(proj)
     }
   }
@@ -28,6 +29,12 @@ class ModelSpec extends Specification {
       running(FakeApp) {
         val Some(project) = Project.findOne(MongoDBObject("name" -> "test1"))
         project.description must endWith("project")
+      }
+    }
+    "have one requirement" in {
+      running(FakeApp) {
+        val Some(project) = Project.findOne(MongoDBObject("name" -> "test1"))
+        project.requirements.size  must_== 1
       }
     }
   }
