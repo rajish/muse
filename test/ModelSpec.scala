@@ -14,12 +14,12 @@ class ModelSpec extends Specification {
   def mongoTestDatabase() = Map("mongo.url" -> "muse-database-test")
 
   object FakeApp extends FakeApplication(additionalConfiguration = mongoTestDatabase())
+  val req = Requirement("REQ1", 1, "First requirement", Strength.Shall, new Classification(packageName = "demo"), "Some description", Nil, new ObjectId, Nil, Nil)
+  val proj = Project("test1", "test project", req :: Nil, Nil, Nil, Nil)
 
   step {
     running(FakeApp) {
       Project.remove(MongoDBObject.empty)
-      val req = Requirement("REQ1", 1, "First requirement", Strength.Shall, new Classification(packageName = "demo"), "Some description", Nil, new ObjectId, Nil, Nil)
-      val proj = Project("test1", "test project", req :: Nil, Nil, Nil, Nil)
       Project.insert(proj)
     }
   }
@@ -34,7 +34,9 @@ class ModelSpec extends Specification {
     "have one requirement" in {
       running(FakeApp) {
         val Some(project) = Project.findOne(MongoDBObject("name" -> "test1"))
+        project.requirements must not be empty
         project.requirements.size  must_== 1
+        project.requirements must contain(req).only
       }
     }
   }
