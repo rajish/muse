@@ -89,9 +89,12 @@ case class Requirement(
 
 object Requirement extends ModelCompanion[Requirement, ObjectId] {
   val collection = getCollection("requirements")
+
   val dao = new SalatDAO[Requirement, ObjectId](collection = collection) {
     val children = new ChildCollection[Requirement, ObjectId](collection = getCollection("requirements"), parentIdField = "parentId"){}
   }
+
+  def findByRef(ref: String) = findOne(MongoDBObject( "refId" -> ref))
 }
 
 // ------------------------------ Actors ------------------------------
@@ -176,4 +179,5 @@ case class Project(
 object Project extends ModelCompanion[Project, ObjectId] {
   val collection = getCollection("projects")
   val dao = new SalatDAO[Project, ObjectId](collection = collection){}
+  def findByName( name: String) =  findOne(MongoDBObject("name" -> name))
 }
