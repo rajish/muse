@@ -50,6 +50,12 @@ class ModelSpec extends Specification {
       "have one stakeholder" in {
         project.stakeholders must not be empty
       }
+
+      "not have duplicates with the same name" in {
+        val proj = Project("test1", "test project", Nil, Nil, Nil, Nil)
+        Project.insert(proj) must throwAn[Error]
+        Project.find(MongoDBObject("name" -> "test1")).count must_== 1
+      }
     }
   }
 
@@ -60,6 +66,12 @@ class ModelSpec extends Specification {
         requirement must beAnInstanceOf[Requirement]
         requirement.refId must beEqualTo("REQ1")
         requirement.title must startWith("First")
+      }
+
+      "not have duplicates with the same refId" in {
+        val req = Requirement("REQ1", 1, "First requirement", Strength.Shall, new Classification(packageName = "demo"), "Some description", Nil, new ObjectId, Nil, Nil)
+        Requirement.insert(req)  must throwAn[Error]
+        Requirement.find(MongoDBObject("refId" -> "REQ1")).count must_== 1
       }
     }
   }
