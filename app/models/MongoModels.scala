@@ -170,7 +170,7 @@ case class GlossaryEntry(
 case class Project(
   name: String,
   description: String,
-  requirements: List[Requirement],
+  requirements: MongoDBList,
   stakeholders: List[Stakeholder],
   usecases: List[UseCase],
   glossary: List[GlossaryEntry]
