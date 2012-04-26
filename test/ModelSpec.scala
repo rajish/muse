@@ -6,6 +6,8 @@ import play.api._
 import play.api.test._
 import play.api.test.Helpers._
 
+import com.mongodb.casbah.Imports._
+
 
 class ModelSpec extends Specification {
   import models._
@@ -19,12 +21,14 @@ class ModelSpec extends Specification {
     running(FakeApp) {
       val stake = Stakeholder("SH1", "user", "general user", "User")
       val req = Requirement("REQ1", 1, "First requirement", Strength.Shall, new Classification(packageName = "demo"), "Some description", Nil, new ObjectId, Nil, Nil)
+      val reqs = MongoDBList.newBuilder
+      reqs += req
       val proj = Project("test1",
                          "test project",
-                         req :: Nil,    // requirements
-                         stake :: Nil, // stakeholders
-                         Nil,          // usecases
-                         Nil           // glossary
+                         reqs.result,   // requirements
+                         stake :: Nil,  // stakeholders
+                         Nil,           // usecases
+                         Nil            // glossary
                        )
       Project.remove(MongoDBObject.empty)
       Project.insert(proj)
@@ -38,17 +42,19 @@ class ModelSpec extends Specification {
 
       "be retrieved by name" in {
         project must beAnInstanceOf[Project]
-        project.description must endWith("project")
+        project.description must beEqualTo("test project")
       }
 
       "have one requirement" in {
         project.requirements must not be empty
         project.requirements.size  must_== 1
-        project.requirements.head.title must beEqualTo("First requirement")
+        project.requirements.getAs[Requirement](0).title must beEqualTo("First requirement")
       }
 
       "have one stakeholder" in {
         project.stakeholders must not be empty
+        project.stakeholders.size must_== 1
+        project.stakeholders.head.title must beEqualTo("user")
       }
 
       "not have duplicates with the same name" in {
@@ -59,16 +65,18 @@ class ModelSpec extends Specification {
     }
   }
 
-  running(FakeApp) {
-    val Some(requirement) = Requirement.findByRef("REQ1")
-    "Requirement" should {
-      "be retrieved by refId" in {
+  "Requirement" should {
+    "be retrieved by refId" in {
+      running(FakeApp) {
+        val Some(requirement) = Requirement.findByRef("REQ1")
         requirement must beAnInstanceOf[Requirement]
         requirement.refId must beEqualTo("REQ1")
         requirement.title must startWith("First")
       }
+    }
 
-      "not have duplicates with the same refId" in {
+    "not have duplicates with the same refId" in {
+      running(FakeApp) {
         val req = Requirement("REQ1", 1, "First requirement", Strength.Shall, new Classification(packageName = "demo"), "Some description", Nil, new ObjectId, Nil, Nil)
         Requirement.insert(req)  must throwAn[Error]
         Requirement.find(MongoDBObject("refId" -> "REQ1")).count must_== 1
