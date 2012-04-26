@@ -6,6 +6,7 @@ import play.api._
 import play.api.test._
 import play.api.test.Helpers._
 
+import com.novus.salat.util._
 
 class ModelSpec extends Specification {
   import models._
@@ -41,8 +42,8 @@ class ModelSpec extends Specification {
         project.description must endWith("project")
       }
 
-      "have one requirement" in {
-        project.requirements must not be empty
+      "have exactly one requirement" in {
+        SalatDAOUtils.exactlyOne(project.requirements) must be(project.requirements.head)
         project.requirements.size  must_== 1
         project.requirements.head.title must beEqualTo("First requirement")
       }
