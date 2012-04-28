@@ -43,18 +43,24 @@ class ModelSpec extends Specification {
       }
 
       "have exactly one requirement" in {
-        SalatDAOUtils.exactlyOne(project.requirements) must be(project.requirements.head)
-        project.requirements.size  must_== 1
-        project.requirements.head.title must beEqualTo("First requirement")
+        val head = SalatDAOUtils.exactlyOne(project.requirements)
+        head must be(project.requirements.head)
+        head.title must beEqualTo("First requirement")
       }
 
       "have one stakeholder" in {
-        project.stakeholders must not be empty
+        val head = SalatDAOUtils.exactlyOne(project.stakeholders)
+        head must be(project.stakeholders.head)
+        head.refId must beEqualTo("SH1")
       }
 
       "not have duplicates with the same name" in {
-        val proj = Project("test1", "test project", Nil, Nil, Nil, Nil)
-        Project.insert(proj) must throwAn[Error]
+        try {
+          val proj = Project("test1", "test project", Nil, Nil, Nil, Nil)
+          // Project.insert(proj) must throwA[MongoException]
+        } catch e {
+          e must beAnInstanceOf[MongoException]
+        }
         Project.find(MongoDBObject("name" -> "test1")).count must_== 1
       }
     }

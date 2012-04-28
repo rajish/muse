@@ -91,6 +91,7 @@ object Requirement extends ModelCompanion[Requirement, ObjectId] {
   val collection = getCollection("requirements")
 
   val dao = new SalatDAO[Requirement, ObjectId](collection = collection) {
+    collection.ensureIndex(MongoDBObject("refId" -> 1), "refId", unique = true)
     val children = new ChildCollection[Requirement, ObjectId](collection = getCollection("requirements"), parentIdField = "parentId"){}
   }
 
@@ -178,6 +179,8 @@ case class Project(
 
 object Project extends ModelCompanion[Project, ObjectId] {
   val collection = getCollection("projects")
-  val dao = new SalatDAO[Project, ObjectId](collection = collection){}
+  val dao = new SalatDAO[Project, ObjectId](collection = collection){
+    collection.ensureIndex(MongoDBObject("name" -> 1), "name", unique = true)
+  }
   def findByName( name: String) =  findOne(MongoDBObject("name" -> name))
 }
