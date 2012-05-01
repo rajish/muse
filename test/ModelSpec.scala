@@ -55,13 +55,13 @@ class ModelSpec extends Specification {
       }
 
       "not have duplicates with the same name" in {
-        try {
-          val proj = Project("test1", "test project", Nil, Nil, Nil, Nil)
+        // try {
+          val proj = Project("test1", "test project", Nil, Nil, Nil, Nil) must throwA[MongoException]
           // Project.insert(proj) must throwA[MongoException]
-        } catch {
-          case me: MongoException => success
-          case _ => failure
-        }
+        // } catch {
+        //   case me: MongoException => success
+        //   case _ => failure
+        // }
         Project.find(MongoDBObject("name" -> "test1")).count must_== 1
       }
     }
@@ -71,15 +71,24 @@ class ModelSpec extends Specification {
     val requirement = Requirement.findByRef("REQ1")
     "Requirement" should {
       "be retrieved by refId" in {
-        requirement must beAnInstanceOf[Requirement]
+        requirement must beAnInstanceOf[Some[Requirement]]
         val Some(sreq) = requirement
         sreq.refId must beEqualTo("REQ1")
         sreq.title must startWith("First")
       }
 
       "not have duplicates with the same refId" in {
-        val req = Requirement("REQ1", 1, "First requirement", Strength.Shall, new Classification(packageName = "demo"), "Some description", Nil, new ObjectId, Nil, Nil)
-        Requirement.insert(req)  must throwAn[Error]
+        // try {
+          val req = Requirement("REQ1", 1, "First requirement",
+                                Strength.Shall,
+                                new Classification(packageName = "demo"),
+                                "Some description", Nil,
+                                new ObjectId, Nil, Nil)
+          Requirement.insert(req)  must throwAn[MongoException]
+        // } catch {
+        //   case me: MongoException => printf("Got MongoException"); success
+        //   case _ => failure
+        // }
         Requirement.find(MongoDBObject("refId" -> "REQ1")).count must_== 1
       }
     }
