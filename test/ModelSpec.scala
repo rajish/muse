@@ -8,7 +8,7 @@ import play.api.test.Helpers._
 
 import com.novus.salat.util._
 
-class ModelSpec extends Specification {
+class ModelSpec extends Specification with Logging {
   import models._
   import com.mongodb.casbah.Imports._
 
@@ -19,16 +19,15 @@ class ModelSpec extends Specification {
   step {
     running(FakeApp) {
       val stake = Stakeholder("SH1", "user", "general user", "User")
-      val req = Requirement("REQ1", 1, "First requirement", Strength.Shall, new Classification(packageName = "demo"), "Some description", Nil, new ObjectId, Nil, Nil)
-      val proj = Project("test1",
-                         "test project",
-                         req :: Nil,    // requirements
-                         stake :: Nil, // stakeholders
-                         Nil,          // usecases
-                         Nil           // glossary
+      val proj = Project(name = "test1",
+                         description = "test project",
+                         stakeholders = stake :: Nil // stakeholders
                        )
       Project.remove(MongoDBObject.empty)
+      Project.collection.drop()
       Project.insert(proj)
+      val req = Requirement("REQ1", 1, "First requirement", Strength.Shall, new Classification(packageName = "demo"), "Some description", Nil, new ObjectId, proj.id, Nil, Nil)
+      Project.addRequirement(req)
     }
   }
 
@@ -56,8 +55,8 @@ class ModelSpec extends Specification {
 
       "not have duplicates with the same name" in {
         // try {
-          val proj = Project("test1", "test project", Nil, Nil, Nil, Nil) must throwA[MongoException]
-          // Project.insert(proj) must throwA[MongoException]
+        val proj = Project(name = "test1", description = "test project") // must throwA[MongoException]
+        Project.insert(proj) must throwA[MongoException]
         // } catch {
         //   case me: MongoException => success
         //   case _ => failure
@@ -79,12 +78,13 @@ class ModelSpec extends Specification {
 
       "not have duplicates with the same refId" in {
         // try {
+          val Some(proj) = Project.findByName("test1")
           val req = Requirement("REQ1", 1, "First requirement",
                                 Strength.Shall,
                                 new Classification(packageName = "demo"),
                                 "Some description", Nil,
-                                new ObjectId, Nil, Nil)
-          Requirement.insert(req)  must throwAn[MongoException]
+                                new ObjectId, proj.id, Nil, Nil)
+          Project.addRequirement(req)  must throwAn[MongoException]
         // } catch {
         //   case me: MongoException => printf("Got MongoException"); success
         //   case _ => failure

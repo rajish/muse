@@ -83,6 +83,7 @@ case class Requirement(
   description: String,
   stakeholders: List[ObjectId],
   parentId: ObjectId,
+  projectId: ObjectId,
   related: List[ObjectId],
   annotations: List[Annotation]
 )
@@ -169,18 +170,30 @@ case class GlossaryEntry(
 
 // ------------------------------ Project ------------------------------
 case class Project(
+  @Key("_id") id: ObjectId = new ObjectId,
   name: String,
   description: String,
-  requirements: List[Requirement],
-  stakeholders: List[Stakeholder],
-  usecases: List[UseCase],
-  glossary: List[GlossaryEntry]
+  requirements: List[Requirement] = Nil,
+  stakeholders: List[Stakeholder] = Nil,
+  usecases: List[UseCase] = Nil,
+  glossary: List[GlossaryEntry] = Nil
 ) extends TimeStamps
 
 object Project extends ModelCompanion[Project, ObjectId] {
   val collection = getCollection("projects")
   val dao = new SalatDAO[Project, ObjectId](collection = collection){
+
     collection.ensureIndex(MongoDBObject("name" -> 1), "name", unique = true)
+
+    class RequirementsCollection(collection: MongoCollection, parentIdField: String)
+      extends ChildCollection[Requirement, Object](collection, parentIdField)
+
+    val requirements = new RequirementsCollection(getCollection("requirements"), "projectId")
+
   }
   def findByName( name: String) =  findOne(MongoDBObject("name" -> name))
+
+  def addRequirement(r: Requirement) = {
+    dao.requirements.insert(r)
+  }
 }
