@@ -75,24 +75,25 @@ case class Classification(
 )
 
 case class Requirement(
+  @Key("_id") id: ObjectId = new ObjectId,
   refId: String,
   version: BigDecimal,
   title: String,
   strength: Strength.Value = Strength.Shall,
   classification: Classification,
   description: String,
-  stakeholders: List[ObjectId],
-  parentId: ObjectId,
-  projectId: ObjectId,
-  related: List[ObjectId],
-  annotations: List[Annotation]
+  stakeholders: List[ObjectId] = Nil,
+  parentId: Option[ObjectId] =  None,
+  projectId: Option[ObjectId] = None,
+  related: List[ObjectId] = Nil,
+  annotations: List[Annotation] = Nil
 )
 
 object Requirement extends ModelCompanion[Requirement, ObjectId] {
   val collection = getCollection("requirements")
 
   val dao = new SalatDAO[Requirement, ObjectId](collection = collection) {
-    collection.ensureIndex(MongoDBObject("refId" -> 1), "refId", unique = true)
+    collection.ensureIndex(MongoDBObject("refId" -> 1), "refId", unique = false) // must not be unique because of versioning
     val children = new ChildCollection[Requirement, ObjectId](collection = getCollection("requirements"), parentIdField = "parentId"){}
   }
 
