@@ -7,10 +7,11 @@ import play.api.test._
 import play.api.test.Helpers._
 
 import com.novus.salat.util._
+import models._
+import com.mongodb.casbah.Imports._
 
 class ModelSpec extends Specification with Logging {
-  import models._
-  import com.mongodb.casbah.Imports._
+  sequential
 
   def mongoTestDatabase() = Map("mongo.url" -> "muse-database-test")
 
@@ -26,7 +27,14 @@ class ModelSpec extends Specification with Logging {
       Project.remove(MongoDBObject.empty)
       Project.collection.drop()
       Project.insert(proj)
-      val req = Requirement("REQ1", 1, "First requirement", Strength.Shall, new Classification(packageName = "demo"), "Some description", Nil, new ObjectId, proj.id, Nil, Nil)
+      val req = Requirement(
+        refId           =  "REQ1",
+        version         =  1,
+        title           =  "First  requirement",
+        classification  =  new     Classification(packageName  =  "demo"),
+        description     =  "Some   description",
+        parentId        =  Some(proj.id)
+      )
       Project.addRequirement(req)
     }
   }
@@ -54,13 +62,13 @@ class ModelSpec extends Specification with Logging {
       }
 
       "not have duplicates with the same name" in {
-        // try {
-        val proj = Project(name = "test1", description = "test project") // must throwA[MongoException]
-        Project.insert(proj) must throwA[MongoException]
-        // } catch {
-        //   case me: MongoException => success
-        //   case _ => failure
-        // }
+        try {
+          val proj = Project(name = "test1", description = "test project") // must throwA[MongoException]
+          Project.insert(proj) must throwA[MongoException]
+        } catch {
+          case me: MongoException => success
+          case _ => failure
+        }
         Project.find(MongoDBObject("name" -> "test1")).count must_== 1
       }
     }
@@ -79,11 +87,14 @@ class ModelSpec extends Specification with Logging {
       "not have duplicates with the same refId" in {
         // try {
           val Some(proj) = Project.findByName("test1")
-          val req = Requirement("REQ1", 1, "First requirement",
-                                Strength.Shall,
-                                new Classification(packageName = "demo"),
-                                "Some description", Nil,
-                                new ObjectId, proj.id, Nil, Nil)
+          val req = Requirement(
+            refId           =  "REQ1",
+            version         =  1,
+            title           =  "First  requirement",
+            classification  =  new     Classification(packageName  =  "demo"),
+            description     =  "Some   description",
+            parentId        =  Some(proj.id)
+          )
           Project.addRequirement(req)  must throwAn[MongoException]
         // } catch {
         //   case me: MongoException => printf("Got MongoException"); success
