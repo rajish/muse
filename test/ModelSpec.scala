@@ -13,7 +13,7 @@ import com.mongodb.casbah.Imports._
 class ModelSpec extends Specification with Logging {
   sequential
 
-  def mongoTestDatabase() = Map("mongo.url" -> "muse-database-test")
+  def mongoTestDatabase() = Map("mongo.dbname" -> "muse_db_test")
 
   object FakeApp extends FakeApplication(additionalConfiguration = mongoTestDatabase())
 
@@ -22,7 +22,7 @@ class ModelSpec extends Specification with Logging {
       val stake = Stakeholder("SH1", "user", "general user", "User")
       val proj = Project(name = "test1",
                          description = "test project",
-                         stakeholders = stake :: Nil // stakeholders
+                         stakeholders = stake :: Nil
                        )
       Project.remove(MongoDBObject.empty)
       Project.collection.drop()
@@ -50,25 +50,27 @@ class ModelSpec extends Specification with Logging {
       }
 
       "have exactly one requirement" in {
-        val head = SalatDAOUtils.exactlyOne(project.requirements) //must throwA[Throwable]
-        head must be(project.requirements.head)
-        head.title must beEqualTo("First requirement")
+        {
+          val head = SalatDAOUtils.exactlyOne(project.requirements)
+          head must be(project.requirements.head)
+          head.title must beEqualTo("First requirement")
+        } must not( throwA[Throwable] )
       }
 
       "have one stakeholder" in {
-        val head = SalatDAOUtils.exactlyOne(project.stakeholders)
-        head must be(project.stakeholders.head)
-        head.refId must beEqualTo("SH1")
+        {
+          val head = SalatDAOUtils.exactlyOne(project.stakeholders)
+          head must be(project.stakeholders.head)
+          head.refId must beEqualTo("SH1")
+        } must not( throwA[Throwable] )
       }
 
       "not have duplicates with the same name" in {
-        try {
-          val proj = Project(name = "test1", description = "test project") // must throwA[MongoException]
-          Project.insert(proj) must throwA[MongoException]
-        } catch {
-          case me: MongoException => success
-          case _ => failure
-        }
+        {
+          val proj = Project(name = "test1", description = "test project")
+          Project.insert(proj)
+        } must throwA[MongoException]
+
         Project.find(MongoDBObject("name" -> "test1")).count must_== 1
       }
     }
@@ -84,8 +86,8 @@ class ModelSpec extends Specification with Logging {
         sreq.title must startWith("First")
       }
 
-      "not have duplicates with the same refId" in {
-        // try {
+      "allow duplicates with the same refId" in {
+        {
           val Some(proj) = Project.findByName("test1")
           val req = Requirement(
             refId           =  "REQ1",
@@ -95,12 +97,9 @@ class ModelSpec extends Specification with Logging {
             description     =  "Some   description",
             parentId        =  Some(proj.id)
           )
-          Project.addRequirement(req)  must throwAn[MongoException]
-        // } catch {
-        //   case me: MongoException => printf("Got MongoException"); success
-        //   case _ => failure
-        // }
-        Requirement.find(MongoDBObject("refId" -> "REQ1")).count must_== 1
+          Project.addRequirement(req)
+        } must not (throwA[MongoException])
+
       }
     }
   }
