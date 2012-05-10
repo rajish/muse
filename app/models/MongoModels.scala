@@ -93,7 +93,7 @@ object Requirement extends ModelCompanion[Requirement, ObjectId] {
   val collection = getCollection("requirements")
 
   val dao = new SalatDAO[Requirement, ObjectId](collection = collection) {
-    collection.ensureIndex(MongoDBObject("refId" -> 1), "refId", unique = false) // must not be unique because of versioning
+    collection.ensureIndex(MongoDBObject("refId" -> 1, "version" -> 1), "refId_version", unique = true)
     val children = new ChildCollection[Requirement, ObjectId](collection = getCollection("requirements"), parentIdField = "parentId"){}
   }
 
@@ -178,7 +178,13 @@ case class Project(
   stakeholders: List[Stakeholder] = Nil,
   usecases: List[UseCase] = Nil,
   glossary: List[GlossaryEntry] = Nil
-) extends TimeStamps
+) extends TimeStamps {
+
+  def addRequirement(r: Requirement) {
+    val reqs = r.copy(projectId = Option(id)) :: requirements
+    Project.save(copy(requirements = reqs))
+  }
+}
 
 object Project extends ModelCompanion[Project, ObjectId] {
   val collection = getCollection("projects")
@@ -186,15 +192,7 @@ object Project extends ModelCompanion[Project, ObjectId] {
 
     collection.ensureIndex(MongoDBObject("name" -> 1), "name", unique = true)
 
-    class RequirementsCollection(collection: MongoCollection, parentIdField: String)
-      extends ChildCollection[Requirement, Object](collection, parentIdField)
-
-    val requirements = new RequirementsCollection(getCollection("requirements"), "projectId")
-
   }
   def findByName( name: String) =  findOne(MongoDBObject("name" -> name))
 
-  def addRequirement(r: Requirement) = {
-    dao.requirements.insert(r)
-  }
 }

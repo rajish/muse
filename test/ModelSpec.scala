@@ -11,35 +11,36 @@ import models._
 import com.mongodb.casbah.Imports._
 
 class ModelSpec extends Specification with Logging {
-  sequential
+  override def is = args(sequential = true) ^ super.is
 
-  def mongoTestDatabase() = Map("mongo.dbname" -> "muse_db_test")
+  val db_name = "muse_db_test"
+
+  def mongoTestDatabase() = Map("mongodb.default.db" -> db_name)
 
   object FakeApp extends FakeApplication(additionalConfiguration = mongoTestDatabase())
 
-  step {
-    running(FakeApp) {
-      val stake = Stakeholder("SH1", "user", "general user", "User")
-      val proj = Project(name = "test1",
-                         description = "test project",
-                         stakeholders = stake :: Nil
-                       )
-      Project.remove(MongoDBObject.empty)
-      Project.collection.drop()
-      Project.insert(proj)
-      val req = Requirement(
-        refId           =  "REQ1",
-        version         =  1,
-        title           =  "First  requirement",
-        classification  =  new     Classification(packageName  =  "demo"),
-        description     =  "Some   description",
-        parentId        =  Some(proj.id)
-      )
-      Project.addRequirement(req)
-    }
+  running(FakeApp) {
+    log.trace("Database setup.")
+    MongoConnection().dropDatabase(db_name)
+    val stake = Stakeholder("SH1", "user", "general user", "User")
+    val proj = Project(name = "test1",
+                       description = "test project",
+                       stakeholders = stake :: Nil
+                     )
+    Project.insert(proj)
+    val req = Requirement(
+      refId           =  "REQ1",
+      version         =  1,
+      title           =  "First requirement",
+      classification  =  new Classification(packageName  =  "demo"),
+      description     =  "Some description",
+      parentId        =  Some(proj.id)
+    )
+    proj.addRequirement(req)
   }
 
   running(FakeApp) {
+    log.trace("Project tests.")
     val Some(project) = Project.findByName("test1")
 
     "Project" should {
@@ -50,24 +51,23 @@ class ModelSpec extends Specification with Logging {
       }
 
       "have exactly one requirement" in {
-        {
-          val head = SalatDAOUtils.exactlyOne(project.requirements)
-          head must be(project.requirements.head)
-          head.title must beEqualTo("First requirement")
-        } must not( throwA[Throwable] )
+        SalatDAOUtils.exactlyOne(project.requirements) must not( throwA[Throwable] )
+        val head = SalatDAOUtils.exactlyOne(project.requirements)
+        head must be(project.requirements.head)
+        head.title must beEqualTo("First requirement")
+        head.projectId must_== Option(project.id)
       }
 
       "have one stakeholder" in {
-        {
-          val head = SalatDAOUtils.exactlyOne(project.stakeholders)
-          head must be(project.stakeholders.head)
-          head.refId must beEqualTo("SH1")
-        } must not( throwA[Throwable] )
+        SalatDAOUtils.exactlyOne(project.stakeholders) must not( throwA[Throwable] )
+        val head = SalatDAOUtils.exactlyOne(project.stakeholders)
+        head must be(project.stakeholders.head)
+        head.refId must beEqualTo("SH1")
       }
 
       "not have duplicates with the same name" in {
         {
-          val proj = Project(name = "test1", description = "test project")
+          val proj = Project(name = "test1", description = "duplicate test project")
           Project.insert(proj)
         } must throwA[MongoException]
 
@@ -77,6 +77,7 @@ class ModelSpec extends Specification with Logging {
   }
 
   running(FakeApp) {
+    log.trace("Requirement tests.")
     val requirement = Requirement.findByRef("REQ1")
     "Requirement" should {
       "be retrieved by refId" in {
@@ -97,7 +98,7 @@ class ModelSpec extends Specification with Logging {
             description     =  "Some   description",
             parentId        =  Some(proj.id)
           )
-          Project.addRequirement(req)
+          proj.addRequirement(req)
         } must not (throwA[MongoException])
 
       }
