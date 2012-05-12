@@ -79,15 +79,22 @@ case class Requirement(
   refId: String,
   version: BigDecimal,
   title: String,
-  strength: Strength.Value = Strength.Shall,
   classification: Classification,
   description: String,
-  stakeholders: List[ObjectId] = Nil,
-  parentId: Option[ObjectId] =  None,
   projectId: Option[ObjectId] = None,
-  related: List[ObjectId] = Nil,
-  annotations: List[Annotation] = Nil
-)
+  strength: Strength.Value = Strength.Shall,
+  parentId: Option[ObjectId] =  None
+  // stakeholders: List[ObjectId] = Nil,
+  // related: List[ObjectId] = Nil,
+  // annotations: List[Annotation] = Nil
+) extends TimeStamps {
+
+  def addChild(r: Requirement): Unit =  {
+    val req = r.copy(parentId = Option(id))
+    Requirement.insert(req)
+  }
+
+}
 
 object Requirement extends ModelCompanion[Requirement, ObjectId] {
   val collection = getCollection("requirements")
@@ -173,16 +180,12 @@ case class GlossaryEntry(
 case class Project(
   @Key("_id") id: ObjectId = new ObjectId,
   name: String,
-  description: String,
-  requirements: List[Requirement] = Nil,
-  stakeholders: List[Stakeholder] = Nil,
-  usecases: List[UseCase] = Nil,
-  glossary: List[GlossaryEntry] = Nil
+  description: String
 ) extends TimeStamps {
 
   def addRequirement(r: Requirement) {
-    val reqs = r.copy(projectId = Option(id)) :: requirements
-    Project.save(copy(requirements = reqs))
+    val req = r.copy(projectId = Option(id))
+    Requirement.insert(r)
   }
 }
 

@@ -24,8 +24,7 @@ class ModelSpec extends Specification with Logging {
     MongoConnection().dropDatabase(db_name)
     val stake = Stakeholder("SH1", "user", "general user", "User")
     val proj = Project(name = "test1",
-                       description = "test project",
-                       stakeholders = stake :: Nil
+                       description = "test project"
                      )
     Project.insert(proj)
     val req = Requirement(
@@ -33,8 +32,7 @@ class ModelSpec extends Specification with Logging {
       version         =  1,
       title           =  "First requirement",
       classification  =  new Classification(packageName  =  "demo"),
-      description     =  "Some description",
-      parentId        =  Some(proj.id)
+      description     =  "Some description"
     )
     proj.addRequirement(req)
   }
