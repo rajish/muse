@@ -195,6 +195,10 @@ object Project extends ModelCompanion[Project, ObjectId] {
 
     collection.ensureIndex(MongoDBObject("name" -> 1), "name", unique = true)
 
+    class ProjectChild [ ChildType <: AnyRef ] (val collection : MongoCollection)
+      extends ChildCollection [ ChildType, ObjectId ] (collection, "projectId") {}
+
+    val requirements = new ProjectChild[Requirement](getCollection("requirements"))
   }
   def findByName( name: String) =  findOne(MongoDBObject("name" -> name))
 
