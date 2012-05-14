@@ -199,6 +199,8 @@ object Project extends ModelCompanion[Project, ObjectId] {
       extends ChildCollection [ ChildType, ObjectId ] (collection, "projectId") {}
 
     val requirements = new ProjectChild[Requirement](getCollection("requirements"))
+    val useCases     = new ProjectChild[UseCase](getCollection("use_cases"))
+    val glossary     = new ProjectChild[GlossaryEntry](getCollection("glossary"))
   }
   def findByName( name: String) =  findOne(MongoDBObject("name" -> name))
 
