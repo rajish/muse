@@ -49,7 +49,7 @@ class ModelSpec extends Specification with Logging {
       }
 
       "have exactly one requirement" in {
-        val reqs = Project.requirements.findByParentId(project.id).toList
+        val reqs = Project.dao.requirements.findByParentId(project.id).toList
         val head = SalatDAOUtils.exactlyOne(reqs)
         head must be(reqs.head)
         head.title must beEqualTo("First requirement")
@@ -58,7 +58,7 @@ class ModelSpec extends Specification with Logging {
 
       "have one stakeholder" in {
         SalatDAOUtils.exactlyOne(project.stakeholders) must not( throwA[Throwable] )
-        val stakes = Project.stakeholders.findByParentId(projec.id).toList
+        val stakes = Project.dao.stakeholders.findByParentId(projec.id).toList
         val head = SalatDAOUtils.exactlyOne(stakes)
         head must be(stakes.head)
         head.refId must beEqualTo("SH1")

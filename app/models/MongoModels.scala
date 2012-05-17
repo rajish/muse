@@ -21,6 +21,8 @@ trait TimeStamps {
   var modified: DateTime = DateTime.now
 }
 
+class ChildType()
+
 // ------------------------------ Common ------------------------------
 case class Comment(
   description: String,
@@ -74,7 +76,7 @@ case class Classification(
   packageName: String
 )
 
-case class Requirement(
+case class Requirement (
   @Key("_id") id: ObjectId = new ObjectId,
   refId: String,
   version: BigDecimal,
@@ -87,7 +89,7 @@ case class Requirement(
   // stakeholders: List[ObjectId] = Nil,
   // related: List[ObjectId] = Nil,
   // annotations: List[Annotation] = Nil
-) extends TimeStamps {
+) extends ChildType with TimeStamps {
 
   def addChild(r: Requirement): Unit =  {
     val req = r.copy(parentId = Option(id))
@@ -166,7 +168,7 @@ case class UseCase(
   mainFlow: List[Step],
   alternateFlows: List[AlternateFlow],
   excetpionFlows: List[AlternateFlow] // rejoinStepId always None
-)
+) extends ChildType
 
 
 // ------------------------------ Glossary ------------------------------
@@ -174,7 +176,7 @@ case class GlossaryEntry(
   title: String,
   abbreviation: String,
   description: String
-)
+) extends ChildType
 
 // ------------------------------ Project ------------------------------
 case class Project(
@@ -195,12 +197,12 @@ object Project extends ModelCompanion[Project, ObjectId] {
 
     collection.ensureIndex(MongoDBObject("name" -> 1), "name", unique = true)
 
-    class ProjectChild [ ChildType <: AnyRef ] (val collection : MongoCollection)
-      extends ChildCollection [ ChildType, ObjectId ] (collection, "projectId") {}
+    class ProjectChild [T: Manifest] (collection : MongoCollection)
+      extends ChildCollection [ T, ObjectId ] (collection, "projectId")
 
     val requirements = new ProjectChild[Requirement](getCollection("requirements"))
-    val useCases     = new ProjectChild[UseCase](getCollection("use_cases"))
-    val glossary     = new ProjectChild[GlossaryEntry](getCollection("glossary"))
+    val useCases     = new ProjectChild(getCollection("use_cases"))
+    val glossary     = new ProjectChild(getCollection("glossary"))
   }
   def findByName( name: String) =  findOne(MongoDBObject("name" -> name))
 
