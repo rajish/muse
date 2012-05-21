@@ -191,14 +191,15 @@ case class Project(
   }
 }
 
+import com.novus.salat.dao.SalatDAO._
+class ProjectChild [T] (override val collection : MongoCollection)(implicit mct: Manifest[T], mcid: Manifest[ObjectId], ctx: Context)
+  extends ChildCollection [ T, ObjectId ] (collection, "projectId")(mct, mcid, ctx){}
+
 object Project extends ModelCompanion[Project, ObjectId] {
   val collection = getCollection("projects")
   val dao = new SalatDAO[Project, ObjectId](collection = collection){
 
     collection.ensureIndex(MongoDBObject("name" -> 1), "name", unique = true)
-
-    class ProjectChild [T: Manifest] (collection : MongoCollection)
-      extends ChildCollection [ T, ObjectId ] (collection, "projectId")
 
     val requirements = new ProjectChild[Requirement](getCollection("requirements"))
     val useCases     = new ProjectChild(getCollection("use_cases"))
