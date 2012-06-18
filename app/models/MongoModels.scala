@@ -167,7 +167,8 @@ case class UseCase(
   properties: List[Option[String]],
   mainFlow: List[Step],
   alternateFlows: List[AlternateFlow],
-  excetpionFlows: List[AlternateFlow] // rejoinStepId always None
+  excetpionFlows: List[AlternateFlow], // rejoinStepId always None
+  projectId: Option[Project] = None
 ) extends ChildType
 
 
@@ -175,7 +176,8 @@ case class UseCase(
 case class GlossaryEntry(
   title: String,
   abbreviation: String,
-  description: String
+  description: String,
+  projectId: Option[Project] = None
 ) extends ChildType
 
 // ------------------------------ Project ------------------------------
@@ -191,19 +193,18 @@ case class Project(
   }
 }
 
-import com.novus.salat.dao.SalatDAO._
-class ProjectChild [T] (override val collection : MongoCollection)(implicit mct: Manifest[T], mcid: Manifest[ObjectId], ctx: Context)
-  extends ChildCollection [ T, ObjectId ] (collection, "projectId")(mct, mcid, ctx){}
-
 object Project extends ModelCompanion[Project, ObjectId] {
   val collection = getCollection("projects")
   val dao = new SalatDAO[Project, ObjectId](collection = collection){
 
     collection.ensureIndex(MongoDBObject("name" -> 1), "name", unique = true)
 
-    val requirements = new ProjectChild[Requirement](getCollection("requirements"))
-    val useCases     = new ProjectChild(getCollection("use_cases"))
-    val glossary     = new ProjectChild(getCollection("glossary"))
+    val requirements = new ChildCollection[Requirement, ObjectId](
+      collection = getCollection("requirements"), parentIdField = "projectId"){}
+    val useCases     = new ChildCollection[UseCase, ObjectId](
+      collection = getCollection("use_cases"), parentIdField = "projectId"){}
+    val glossary     = new ChildCollection[GlossaryEntry, ObjectId](
+      collection = getCollection("glossary"), parentIdField = "projectId"){}
   }
   def findByName( name: String) =  findOne(MongoDBObject("name" -> name))
 
