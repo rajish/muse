@@ -1,1 +1,1 @@
-export PATH=~/bin/play20:$PATH
+export PATH=~/bin/play2:$PATH

@@ -1,6 +1,7 @@
 import sbt._
 import Keys._
 import PlayProject._
+import sbtbuildinfo.Plugin._
 import sbtscalaxb.Plugin._
 import ScalaxbKeys._
 
@@ -27,7 +28,7 @@ object ApplicationBuild extends Build {
       buildInfoKeys := Seq[Scoped](name, version, scalaVersion, sbtVersion),
       buildInfoPackage := "hello",
       packageName in scalaxb in Compile := "models",
-      protocolPackageName in scalaxb in Compile := Some("zpProtocol"),
+      protocolPackageName in scalaxb in Compile := Some("XuseProtocol"),
       sourceGenerators in Compile <+= scalaxb in Compile,
       // salat settings
       routesImport += "se.radley.plugin.salat.Binders._",
