@@ -1,7 +1,6 @@
 import sbt._
 import Keys._
-import PlayProject._
-import sbtbuildinfo.Plugin._
+import play.Project._
 import sbtscalaxb.Plugin._
 import ScalaxbKeys._
 
@@ -16,20 +15,17 @@ object ApplicationBuild extends Build {
     val novusRels = "repo.novus rels" at "http://repo.novus.com/releases/"
 
     val appDependencies = Seq(
-      "se.radley" %% "play-plugins-salat" % "1.0.1"
+      "se.radley" %% "play-plugins-salat" % "1.2"
     )
 
-    val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA,
-                           settings = Defaults.defaultSettings ++ buildInfoSettings ++ scalaxbSettings
+    val main = play.Project(appName, appVersion, appDependencies,
+                           settings = Defaults.defaultSettings ++ scalaxbSettings
                          ).settings(
       lessEntryPoints <<= baseDirectory(_ / "app" / "assets" / "css" ** "style.less"),
       // scalaxb settings
-      sourceGenerators in Compile <+= buildInfo,
-      buildInfoKeys := Seq[Scoped](name, version, scalaVersion, sbtVersion),
-      buildInfoPackage := "hello",
+      sourceGenerators in Compile <+= scalaxb in Compile,
       packageName in scalaxb in Compile := "models",
       protocolPackageName in scalaxb in Compile := Some("XuseProtocol"),
-      sourceGenerators in Compile <+= scalaxb in Compile,
       // salat settings
       routesImport += "se.radley.plugin.salat.Binders._",
       templatesImport += "org.bson.types.ObjectId",
