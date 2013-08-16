@@ -6,4 +6,5 @@ tmp
 .history
 dist
 *~
-/.ensime
+/.ensime*
+/.emacs.desktop.lock
