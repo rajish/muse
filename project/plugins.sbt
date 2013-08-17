@@ -17,3 +17,6 @@ addSbtPlugin("org.scalaxb" % "sbt-scalaxb" % "1.1.1")
 
 // The ENSIME plugin
 addSbtPlugin("org.ensime" % "ensime-sbt-cmd" % "0.0.10")
+
+// Auto-refresh plugin - https://github.com/jamesward/play-auto-refresh
+addSbtPlugin("com.jamesward" %% "play-auto-refresh" % "0.0.4")
