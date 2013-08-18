@@ -26,10 +26,7 @@ object ApplicationBuild extends Build {
   ).settings(
     resolvers ++= Seq(sonatypeSnapshots),
     lessEntryPoints <<= baseDirectory(_ / "app" / "assets" / "css" ** "style.less"),
-    // salat settings
-    // routesImport += "se.radley.plugin.salat.Binders._",
-    // templatesImport += "org.bson.types.ObjectId",
-    // ensime settings
+    coffeescriptOptions := Seq("bare", "/usr/local/bin/coffee -p"),
     ensimeConfig := sexp(
       key(":only-include-in-index"), sexp(
         "controllers\\..*",
