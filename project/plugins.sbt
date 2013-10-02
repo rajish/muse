@@ -2,21 +2,13 @@
 logLevel := Level.Warn
 
 // The Typesafe repository 
-resolvers ++= Seq(
-  "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
-  "sonatype-public" at "https://oss.sonatype.org/content/groups/public",
-  "repo.codahale.com" at "http://repo.codahale.com",
-  Resolver.url("artifactory", url("http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases"))(Resolver.ivyStylePatterns))
+resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 
 // Use the Play sbt plugin for Play projects
-addSbtPlugin("play" % "sbt-plugin" % "2.1.3")
-
-// addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.1.1")
-
-addSbtPlugin("org.scalaxb" % "sbt-scalaxb" % "1.1.1")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.2.0")
 
 // The ENSIME plugin
-addSbtPlugin("org.ensime" % "ensime-sbt-cmd" % "0.0.10")
+addSbtPlugin("org.ensime" % "ensime-sbt-cmd" % "0.1.2")
 
 // Auto-refresh plugin - https://github.com/jamesward/play-auto-refresh
-addSbtPlugin("com.jamesward" %% "play-auto-refresh" % "0.0.4")
+// addSbtPlugin("com.jamesward" %% "play-auto-refresh" % "0.0.4")
