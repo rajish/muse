@@ -11,4 +11,4 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.2.0")
 addSbtPlugin("org.ensime" % "ensime-sbt-cmd" % "0.1.2")
 
 // Auto-refresh plugin - https://github.com/jamesward/play-auto-refresh
-// addSbtPlugin("com.jamesward" %% "play-auto-refresh" % "0.0.4")
+ addSbtPlugin("com.jamesward" %% "play-auto-refresh" % "0.0.5")

@@ -2,23 +2,19 @@ import org.ensime.sbt.Plugin.Settings.ensimeConfig
 
 import org.ensime.sbt.util.SExp._
 
+import Dependencies._
+
 name := "muse2"
 
-version := "1.0-SNAPSHOT"
+libraryDependencies ++= Seq(cache) ++ museDependencies
 
-libraryDependencies ++= Seq(
-  cache,
-    "org.reactivemongo" %% "play2-reactivemongo" % "(0.10-SNAPSHOT,)",
-    "org.webjars" %% "webjars-play" % "(2.1.0-2,)",
-    "org.webjars" % "angularjs" % "(1.1.5-1,)",
-    "org.webjars" % "bootstrap" % "(2.3.2,)"
-)
+play.Project.playScalaSettings
 
-lessEntryPoints <<= baseDirectory(_ / "app" / "assets" / "css" ** "style.less")
+// lessEntryPoints <<= baseDirectory(_ / "app" / "assets" / "css" ** "style.less")
 
 coffeescriptOptions := Seq("bare", "/usr/local/bin/coffee -p")
 
-ensimeConfig := sexp(
+ensimeConfig in ThisBuild := sexp(
   key(":only-include-in-index"), sexp(
     "controllers\\..*",
     "models\\..*",
@@ -31,5 +27,3 @@ ensimeConfig := sexp(
     "/home/rajish/bin/play2/framework/src"
   )
 )
-
-play.Project.playScalaSettings
