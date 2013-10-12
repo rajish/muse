@@ -4,7 +4,7 @@ import org.ensime.sbt.util.SExp._
 
 import Dependencies._
 
-name := "muse2"
+name := "muse"
 
 libraryDependencies ++= Seq(cache) ++ museDependencies
 
