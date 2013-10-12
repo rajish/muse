@@ -1,9 +1,25 @@
 'use strict'
 
-angular.module 'muse', ['ngRoute', 'muse.controllers'], ($routeProvider, $locationProvider) ->
-    $routeProvider.when "/project/:projectId",
-        templateUrl: "partials/project.html",
-        controller: ProjectController,
-        controllerAs: "proj"
+angular.module 'muse', [
+    'ngRoute',
+    'muse.controllers',
+    'muse.directives',
+    'muse.filters',
+    'muse.services'],
+    ($routeProvider, $locationProvider) ->
+        $routeProvider
+            .when("/",
+                templateUrl: "partials/index"
+                controller: ProjectController
+            )
+            .when("/login",
+                templateUrl: "partials/login",
+                contoller: SessionController
+            )
+            .when("/project/:projectId",
+                templateUrl: "partials/project",
+                controller: ProjectController
+            )
+            .otherwise(redirectTo: "/")
 
-    $locationProvider.html5Mode true
+        $locationProvider.html5Mode true
