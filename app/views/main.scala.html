@@ -35,11 +35,13 @@
        $script('@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))', 'bootstrap');
      });
 
+     $script('@routes.WebJarAssets.at(WebJarAssets.locate("angular.js"))', 'angular-base');
      $script([
-       '@routes.WebJarAssets.at(WebJarAssets.locate("angular.js"))',
        '@routes.WebJarAssets.at(WebJarAssets.locate("angular-route.js"))',
+       '@routes.WebJarAssets.at(WebJarAssets.locate("angular-sanitize.js"))',
        '@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.js"))'
      ], 'angular');
+
      $script([
        '@routes.Assets.at("javascripts/app.js")',
        '@routes.Assets.at("javascripts/services.js")',
@@ -48,7 +50,7 @@
        '@routes.Assets.at("javascripts/controllers.js")'
      ], 'muse');
 
-     $script.ready(['bootstrap', 'angular', 'muse'], function() {
+     $script.ready(['bootstrap', 'angular-base', 'angular', 'muse'], function() {
        // when all is done, execute bootstrap angular application
        angular.bootstrap(document, ['muse']);
      });

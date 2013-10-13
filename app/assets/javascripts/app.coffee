@@ -1,12 +1,12 @@
 'use strict'
 
-angular.module 'muse', [
+angular.module( 'muse', [
     'ngRoute',
     'muse.controllers',
     'muse.directives',
     'muse.filters',
-    'muse.services'],
-    ($routeProvider, $locationProvider) ->
+    'muse.services'])
+.config(['$routeProvider', ($routeProvider) ->
         $routeProvider
             .when("/",
                 templateUrl: "partials/index"
@@ -22,4 +22,5 @@ angular.module 'muse', [
             )
             .otherwise(redirectTo: "/")
 
-        $locationProvider.html5Mode true
+        # $locationProvider.html5Mode true
+])
