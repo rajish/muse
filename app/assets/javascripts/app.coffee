@@ -10,15 +10,15 @@ angular.module( 'muse', [
         $routeProvider
             .when("/",
                 templateUrl: "partials/index"
-                controller: ProjectController
+                controller: "ProjectController"
             )
             .when("/login",
-                templateUrl: "partials/login",
-                contoller: SessionController
+                templateUrl: "partials/login"
+                contoller: "SessionController"
             )
             .when("/project/:projectId",
-                templateUrl: "partials/project",
-                controller: ProjectController
+                templateUrl: "partials/project"
+                controller: "ProjectController"
             )
             .otherwise(redirectTo: "/")
 

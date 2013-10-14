@@ -14,10 +14,4 @@ angular.module('muse.controllers', [])
     console?.log "ProjectController function"
 
 .controller 'SessionController', ($scope) ->
-    console?.log "SessionController"
-
-ProjectController = ($scope, $routeParams, $http) ->
-    console?.log "ProjectController"
-
-
-SessionController = ($scope, $routeParams, $http) ->
+    console?.log "SessionController function"
