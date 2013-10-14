@@ -10,15 +10,13 @@
      }
     </style>
     <script>
-     // include angular loader, which allows the files to load in any order
      /*
-     AngularJS v1.0.7
+     AngularJS v1.2.0-rc.2
      (c) 2010-2012 Google, Inc. http://angularjs.org
      License: MIT
       */
-     (function(i){'use strict';function d(c,b,e){return c[b]||(c[b]=e())}return d(d(i,"angular",Object),"module",function(){var c={};return function(b,e,f){e&&c.hasOwnProperty(b)&&(c[b]=null);return d(c,b,function(){function a(a,b,d){return function(){c[d||"push"]([a,b,arguments]);return g}}if(!e)throw Error("No module: "+b);var c=[],d=[],h=a("$injector","invoke"),g={_invokeQueue:c,_runBlocks:d,requires:e,name:b,provider:a("$provide","provider"),factory:a("$provide","factory"),service:a("$provide","service"),
-      value:a("$provide","value"),constant:a("$provide","constant","unshift"),filter:a("$filterProvider","register"),controller:a("$controllerProvider","register"),directive:a("$compileProvider","directive"),config:h,run:function(a){d.push(a);return this}};f&&h(f);return g})}})})(window);
-
+     (function(k){'use strict';function d(c,b,e){return c[b]||(c[b]=e())}return d(d(k,"angular",Object),"module",function(){var c={};return function(b,e,f){e&&c.hasOwnProperty(b)&&(c[b]=null);return d(c,b,function(){function a(a,b,d){return function(){c[d||"push"]([a,b,arguments]);return g}}if(!e)throw minErr("$injector")("nomod",b);var c=[],d=[],h=a("$injector","invoke"),g={_invokeQueue:c,_runBlocks:d,requires:e,name:b,provider:a("$provide","provider"),factory:a("$provide","factory"),service:a("$provide",
+     "service"),value:a("$provide","value"),constant:a("$provide","constant","unshift"),animation:a("$animateProvider","register"),filter:a("$filterProvider","register"),controller:a("$controllerProvider","register"),directive:a("$compileProvider","directive"),config:h,run:function(a){d.push(a);return this}};f&&h(f);return g})}})})(window);
 
     // include a third-party async loader library
     /*!
@@ -36,19 +34,21 @@
      });
 
      $script('@routes.WebJarAssets.at(WebJarAssets.locate("angular.js"))', 'angular-base');
-     $script([
-       '@routes.WebJarAssets.at(WebJarAssets.locate("angular-route.js"))',
-       '@routes.WebJarAssets.at(WebJarAssets.locate("angular-sanitize.js"))',
-       '@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.js"))'
-     ], 'angular');
+     $script.ready('angular-base', function(){
+       $script([
+         '@routes.WebJarAssets.at(WebJarAssets.locate("angular-route.js"))',
+         // '@@routes.WebJarAssets.at(WebJarAssets.locate("angular-sanitize.js"))',
+         '@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.js"))'
+       ], 'angular');
+       $script([
+         '@routes.Assets.at("javascripts/app.js")',
+         '@routes.Assets.at("javascripts/services.js")',
+         '@routes.Assets.at("javascripts/filters.js")',
+         '@routes.Assets.at("javascripts/directives.js")',
+         '@routes.Assets.at("javascripts/controllers.js")'
+       ], 'muse');
+     });
 
-     $script([
-       '@routes.Assets.at("javascripts/app.js")',
-       '@routes.Assets.at("javascripts/services.js")',
-       '@routes.Assets.at("javascripts/filters.js")',
-       '@routes.Assets.at("javascripts/directives.js")',
-       '@routes.Assets.at("javascripts/controllers.js")'
-     ], 'muse');
 
      $script.ready(['bootstrap', 'angular-base', 'angular', 'muse'], function() {
        // when all is done, execute bootstrap angular application
