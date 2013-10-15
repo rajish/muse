@@ -1,9 +1,14 @@
 @(title: String)(content: Html)
-
-<!DOCTYPE html>
-
-<html lang="en">
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
     <style type="text/css" media="screen">
      [ng-cloak] {
        display: none;
@@ -37,7 +42,9 @@
      $script.ready('angular-base', function(){
        $script([
          '@routes.WebJarAssets.at(WebJarAssets.locate("angular-route.js"))',
-         // '@@routes.WebJarAssets.at(WebJarAssets.locate("angular-sanitize.js"))',
+         '@routes.WebJarAssets.at(WebJarAssets.locate("angular-resource.js"))',
+         '@routes.WebJarAssets.at(WebJarAssets.locate("angular-cookies.js"))',
+         '@routes.WebJarAssets.at(WebJarAssets.locate("angular-sanitize.js"))',
          '@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.js"))'
        ], 'angular');
        $script([
@@ -53,6 +60,14 @@
      $script.ready(['bootstrap', 'angular-base', 'angular', 'muse'], function() {
        // when all is done, execute bootstrap angular application
        angular.bootstrap(document, ['muse']);
+       // Google Analytics: change UA-XXXXX-X to be your site's ID
+       /*  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview'); */
      });
     </script>
     <title>@title</title>
@@ -64,6 +79,14 @@
 
   </head>
   <body ng-cloak>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="@routes.Assets.at("javascripts/es5-shim/es5-shim.js")"></script>
+      <script src="@routes.Assets.at("javascripts/json3/lib/json3.min.js")"></script>
+    <![endif]-->
     <div class="container">
       <nav class="navbar" role="navigation">
         <div class="navbar-header">
