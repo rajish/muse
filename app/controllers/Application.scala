@@ -14,6 +14,10 @@ object Application extends Controller {
     Ok(views.html.index("muse"))
   }
 
+  def subpage(any: String = "") = Action {
+    Ok(views.html.index(any))
+  }
+
   def partial(file: String) = Action {
     try {
       val module = runtimeMirror.staticModule("views.html.partials." + file)

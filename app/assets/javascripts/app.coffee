@@ -21,6 +21,4 @@ angular.module( 'muse', [
                 controller: "ProjectController"
             )
             .otherwise(redirectTo: "/")
-
-        # $locationProvider.html5Mode true
 ])

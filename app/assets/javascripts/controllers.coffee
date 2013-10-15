@@ -3,7 +3,7 @@
 angular.module('muse.controllers', [])
 
 .controller 'NavbarController', ($scope) ->
-    $scope.loggedIn = true
+    $scope.loggedIn = false
     $scope.projects =[
         name: 'project A',
     ,
@@ -15,3 +15,6 @@ angular.module('muse.controllers', [])
 
 .controller 'SessionController', ($scope) ->
     console?.log "SessionController function"
+
+.controller 'IndexController', ($scope) ->
+    $scope.login = ""
