@@ -1,9 +1,11 @@
 'use strict'
 
+loggedIn = false
+
 angular.module('muse.controllers', [])
 
 .controller 'NavbarController', ($scope) ->
-    $scope.loggedIn = false
+    $scope.loggedIn = loggedIn
     $scope.projects =[
         name: 'project A',
     ,
@@ -17,4 +19,4 @@ angular.module('muse.controllers', [])
     console?.log "SessionController function"
 
 .controller 'IndexController', ($scope) ->
-    $scope.login = ""
+    $scope.loggedIn = loggedIn
