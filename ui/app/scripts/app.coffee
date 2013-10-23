@@ -6,9 +6,11 @@ angular.module('muse', ['ngRoute', 'navbar'])
     $routeProvider
     .when(
         '/',
-        templateUrl: 'views/welcome.html'
+        templateUrl: 'ui/views/welcome.html'
     )
     .otherwise(
         redirectTo: '/'
     )
+
+    $locationProvider.html5Mode(true)
 ])
