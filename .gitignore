@@ -16,3 +16,5 @@ dist
 *~
 /.ensime*
 /.emacs.desktop.lock
+\#*
+.#*
