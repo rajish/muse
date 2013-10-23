@@ -18,5 +18,5 @@ object Dependencies {
   val reactiveMongo      = "org.reactivemongo" %% "play2-reactivemongo"  % reactiveMongoVersion
 
   // Projects
-  val museDependencies = Seq(webjarsPlay, angularjs, jquery, bootstrap, angularUiBootstrap, reactiveMongo)
+  val museDependencies = Seq(reactiveMongo)
 }

@@ -3,14 +3,16 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
-GET     /partials/:file             controllers.Application.partial(file)
+# GET     /                           controllers.Application.index
+# GET     /partials/:file             controllers.Application.partial(file)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
-# Enable webjar based resources to be returned
-GET     /webjars/*file              controllers.WebJarAssets.at(file)
+# GET     /*any                       controllers.Application.subpage(any)
 
-GET     /*any/                      controllers.Application.subpage(any)
-GET     /*any                       controllers.Application.subpage(any)
+GET     /ui                         com.tuplejump.playYeoman.Yeoman.index
+
+->      /ui/                        yeoman.Routes
+
+GET     /                           com.tuplejump.playYeoman.Yeoman.redirectRoot(base="/ui/")

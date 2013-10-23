@@ -2,6 +2,8 @@ import org.ensime.sbt.Plugin.Settings.ensimeConfig
 
 import org.ensime.sbt.util.SExp._
 
+import com.tuplejump.sbt.yeoman.Yeoman
+
 import Dependencies._
 
 name := "muse"
@@ -9,6 +11,8 @@ name := "muse"
 libraryDependencies ++= Seq(cache) ++ museDependencies
 
 play.Project.playScalaSettings
+
+Yeoman.yeomanSettings
 
 // lessEntryPoints <<= baseDirectory(_ / "app" / "assets" / "css" ** "style.less")
 
