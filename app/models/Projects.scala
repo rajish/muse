@@ -17,6 +17,4 @@ case class Project(
 )
 
 object Project  {
-  implicit val projectHandler = Macros.handler[Project]
-
 }
