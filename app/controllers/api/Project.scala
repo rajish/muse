@@ -24,7 +24,7 @@ object Project extends Controller with MongoController {
   def getAll = Action.async {
     val cursor: Cursor[JsObject] = collection.find(Json.obj()).cursor[JsObject]
     val futureProjectsList: Future[List[JsObject]] = cursor.collect[List](10)
-    val futureProjectsArray: Future[JsArray] = futureProjectsList.map { Json.arr(_)}
-    futureProjectsArray map(Ok(_))
+    // val futureProjectsArray: Future[JsArray] = futureProjectsList.map { Json.arr(_)}
+    futureProjectsList map(x => Ok(Json.toJson(x)))
   }
 }

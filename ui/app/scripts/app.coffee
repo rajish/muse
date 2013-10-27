@@ -17,7 +17,7 @@ createItem = (name) ->
     templateUrl: "#{urlRoot}/#{name}.html"
     controller: "#{capitalize(name)}Controller"
 
-angular.module('muse', ['ngRoute', 'navbar'])
+angular.module('muse', ['ngRoute', 'navbar', 'muse.controllers'])
 
 .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
     appConfig = (createItem(item) for item in items)
@@ -40,12 +40,4 @@ angular.module('muse', ['ngRoute', 'navbar'])
     $scope.items = appConfig
     $scope.select = ($scope) ->
         console.log "MenuController.select"
-)
-
-.controller('DashboardController', ($scope) ->
-    console?.log "Dashboard"
-)
-
-.controller('AccountController', ($scope) ->
-    console?.log "Account"
 )

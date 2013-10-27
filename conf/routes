@@ -18,4 +18,4 @@ GET     /ui                         com.tuplejump.playYeoman.Yeoman.index
 GET     /                           com.tuplejump.playYeoman.Yeoman.redirectRoot(base="/ui/")
 
 
-GET     /api/v1/project/all         controllers.api.Project.getAll
+GET     /api/v1/projects/all         controllers.api.Project.getAll

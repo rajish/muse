@@ -1,7 +1,7 @@
 'use strict'
 
 
-angular.module('rtweb.services', ['ngResource'] )
+angular.module('muse.services', ['ngResource'] )
 
 .factory('Project', ['$resource', ($resource) ->
     $resource '/api/v1/projects/:projectId', {},
