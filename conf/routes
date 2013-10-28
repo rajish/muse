@@ -19,3 +19,7 @@ GET     /                           com.tuplejump.playYeoman.Yeoman.redirectRoot
 
 
 GET     /api/v1/projects/all         controllers.api.v1.Project.getAll
+GET     /api/v1/projects/:id         controllers.api.v1.Project.get(id)
+POST    /api/v1/projects             controllers.api.v1.Project.create
+PUT     /api/v1/projects             controllers.api.v1.Project.update
+DELETE  /api/v1/projects             controllers.api.v1.Project.delete
