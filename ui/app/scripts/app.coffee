@@ -19,21 +19,21 @@ createItem = (name) ->
 
 angular.module('muse', ['ngRoute', 'navbar', 'ui.bootstrap', 'ui.codemirror', 'ui.router', 'muse.controllers'])
 
-.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
+.config(['$stateProvider', '$routeProvider', '$locationProvider', ($stateProvider, $routeProvider, $locationProvider) ->
     appConfig = (createItem(item) for item in items)
     console?.log appConfig
-    $routeProvider.when(it.URL, it) for it in appConfig
+    $stateProvider.state(it.name, it) for it in appConfig
 
-    $routeProvider
-    .when(
-        '/',
-        templateUrl: "#{urlRoot}/welcome.html"
-    )
-    .otherwise(
-        redirectTo: '/'
+    $routeProvider.otherwise(
+        redirectTo: appConfig[0].URL
     )
 
     $locationProvider.html5Mode(false)
+])
+
+.run(['$rootScope', '$state', '$stateParams', ($rootScope, $state, $stateParams) ->
+    $rootScope.$state = $state
+    $rootScope.$stateParams = $stateParams
 ])
 
 .controller('MenuController', ($scope) ->

@@ -54,6 +54,8 @@ angular.module('navbar',[])
     transclude: true
     scope:
         target: '@'
+        active: '@'
+        disabled: '@'
         onSelect: '&select'
         onDeselect: '&deselect'
     controller: () -> {}
