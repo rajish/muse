@@ -3,8 +3,10 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <ul class="">
-      <li ng-repeat="project in projects">{{project.name}}</li>
-    </ul>
+    <tabset>
+      <tab ng-repeat="project in projects" heading="{{project.name}}">
+        {{project.description}}
+      </tab>
+    </tabset>
   </div>
 </div>

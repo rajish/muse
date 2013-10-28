@@ -17,7 +17,7 @@ createItem = (name) ->
     templateUrl: "#{urlRoot}/#{name}.html"
     controller: "#{capitalize(name)}Controller"
 
-angular.module('muse', ['ngRoute', 'navbar', 'muse.controllers'])
+angular.module('muse', ['ngRoute', 'navbar', 'ui.bootstrap', 'ui.codemirror', 'ui.router', 'muse.controllers'])
 
 .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
     appConfig = (createItem(item) for item in items)
