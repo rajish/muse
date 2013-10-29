@@ -13,7 +13,7 @@ capitalize = (str) ->
 createItem = (name) ->
     name: capitalize(name)
     uri: "#/#{name}"
-    URL: "/#{name}"
+    url: "/#{name}"
     templateUrl: "#{urlRoot}/#{name}.html"
     controller: "#{capitalize(name)}Controller"
 
@@ -22,7 +22,7 @@ angular.module('muse', ['ngRoute', 'navbar', 'ui.bootstrap', 'ui.codemirror', 'u
 .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
     appConfig = (createItem(item) for item in items)
     console?.log appConfig
-    $routeProvider.when(it.URL, it) for it in appConfig
+    $routeProvider.when(it.url, it) for it in appConfig
 
     $routeProvider
     .when(
@@ -36,8 +36,9 @@ angular.module('muse', ['ngRoute', 'navbar', 'ui.bootstrap', 'ui.codemirror', 'u
     $locationProvider.html5Mode(false)
 ])
 
-.controller('MenuController', ($scope) ->
+.controller('MenuController', ['$scope', '$location', ($scope, $location) ->
     $scope.items = appConfig
+    $scope.$location = $location
     $scope.select = ($scope) ->
         console.log "MenuController.select"
-)
+])

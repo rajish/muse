@@ -8,19 +8,19 @@ angular.module('navbar',[])
     @items = []
 
     @select = (item) ->
-        console?.log "Navbar->select(#{item})"
-        angular.forEach(ctrl.items, (item) ->
-            item.active = false
+        console?.log "Navbar->select(#{item.target}, active=#{item.active})"
+        angular.forEach(ctrl.items, (it) ->
+            it.active = false if it.target != item.target
         )
         item.active = true
 
     @addItem = (item) ->
-        console?.log "Navbar->addItem(#{item})"
+        console?.log "Navbar->addItem(#{item.target}, active=#{item.active})"
         ctrl.items.push item
         ctrl.select(item) if ctrl.items.length == 1 || item.active
 
     @removeItem = (item) ->
-        console?.log "Navbar->removeItem(#{item})"
+        console?.log "Navbar->removeItem(#{item.target}, active=#{item.active})"
         index = ctrl.items.indexOf(item)
         if item.active && ctrl.items.length > 1
             newActiveItem = (if index is tabs.length - 1 then index - 1 else index + 1)
@@ -46,7 +46,7 @@ angular.module('navbar',[])
             navbarCtrl
 )
 
-.directive('navItem',['$parse', ($parse) ->
+.directive('navItem',['$parse', '$location', ($parse, $location) ->
     require: '^navbar'
     restrict: 'EA'
     replace: true
@@ -54,17 +54,23 @@ angular.module('navbar',[])
     transclude: true
     scope:
         target: '@'
+        # active: '@'
+        disabled: '@'
         onSelect: '&select'
         onDeselect: '&deselect'
     controller: () -> {}
     compile: (element, attrs, transclude) ->
         (scope, element, attrs, navbarCtrl) ->
-            scope.$watch 'active', (active) ->
-                if active
-                    navbarCtrl.select(scope)
-                    scope.onSelect()
+            scope.$watch 'active', (nval, oval, sc) ->
+                if nval
+                    console.log "scope.$watch active for #{sc.target}"
+                    navbarCtrl.select(sc)
+                    sc.onSelect()
                 else
-                    scope.onDeselect()
+                    console.log "scope.$watch inactive for #{sc.target}"
+                    sc.onDeselect()
+            scope.active = ('#' + $location.path()).search(scope.target) > -1
+            scope.disabled = false
             scope.select = () -> scope.active = not scope.disabled
             navbarCtrl.addItem(scope)
             scope.$on 'destroy', () -> navbarCtrl.removeItem(scope)
