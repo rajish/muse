@@ -17,7 +17,7 @@ angular.module('navbar',[])
     @addItem = (item) ->
         console?.log "Navbar->addItem(#{item.target}, active=#{item.active})"
         ctrl.items.push item
-        ctrl.select(item) if ctrl.items.length == 1 || item.active
+        ctrl.select(item) if item.active
 
     @removeItem = (item) ->
         console?.log "Navbar->removeItem(#{item.target}, active=#{item.active})"
