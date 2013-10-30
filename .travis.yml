@@ -14,8 +14,8 @@ services:
 before_install: sudo apt-get update
 install:
 #  - sudo apt-get install npm
-  - sudo npm install yo bower grunt
-  - cd ui; npm install; bower install
+#  - sudo npm install yo bower grunt
+#  - cd ui; npm install; bower install
 before_script:
   - wget http://downloads.typesafe.com/play/${PLAY_VERSION}/play-${PLAY_VERSION}.zip
   - unzip -q play-${PLAY_VERSION}.zip
