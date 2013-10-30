@@ -1,0 +1,22 @@
+language: scala
+env:
+  - PLAY_VERSION=2.2.0
+branches:
+  only:
+    - master
+jdk:
+  - openjdk7
+  - oraclejdk7
+services:
+  - mongodb
+before_install: sudo apt-get update
+install:
+  - sudo apt-get install npm
+  - sudo npm install yo bower grunt
+  - cd ui; npm install; bower install
+before_script:
+  - wget http://downloads.typesafe.com/play/${PLAY_VERSION}/play-${PLAY_VERSION}.zip
+  - unzip -q play-${PLAY_VERSION}.zip
+script: play-${PLAY_VERSION}/play test
+notifications:
+  email: false
