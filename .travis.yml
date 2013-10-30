@@ -1,4 +1,6 @@
 language: scala
+node_js:
+  - "0.10"
 env:
   - PLAY_VERSION=2.2.0
 branches:
@@ -6,12 +8,12 @@ branches:
     - master
 jdk:
   - openjdk7
-  - oraclejdk7
+#  - oraclejdk7
 services:
   - mongodb
 before_install: sudo apt-get update
 install:
-  - sudo apt-get install npm
+#  - sudo apt-get install npm
   - sudo npm install yo bower grunt
   - cd ui; npm install; bower install
 before_script:
