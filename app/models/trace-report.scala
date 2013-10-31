@@ -4,10 +4,10 @@ package models
 
 /** Container for all the trace report information.
 */
-case class Traceu45reportType(artefact: Seq[models.ArtefactType] = Nil,
+case class TraceReportType(artefact: Seq[models.ArtefactType] = Nil,
   created: String,
-  baseu45uri: Option[java.net.URI] = None,
-  baseu45id: String)
+  baseUri: Option[java.net.URI] = None,
+  baseId: String)
 
 trait Class
 
@@ -23,7 +23,7 @@ case object Requirement extends Class { override def toString = "requirement" }
 case object Usecase extends Class { override def toString = "usecase" }
 
 
-case class Traceu45to(value: String,
+case class TraceTo(value: String,
   classValue: Option[models.Class] = None)
 
 
@@ -31,41 +31,41 @@ case class Traceu45to(value: String,
 */
 case class ArtefactType(id: String,
   location: Option[String] = None,
-  traceu45to: Seq[models.Traceu45to] = Nil,
+  traceTo: Seq[models.TraceTo] = Nil,
   status: Option[String] = None,
   typeValue: String,
   uri: Option[String] = None)
 
-trait Builtu45inu45artefactu45classifiersType
+trait BuiltInArtefactClassifiersType
 
-object Builtu45inu45artefactu45classifiersType {
-  def fromString(value: String, scope: scala.xml.NamespaceBinding): Builtu45inu45artefactu45classifiersType = value match {
-    case "java:class" => Javau58class
-    case "java:type" => Javau58type
-    case "java:interface" => Javau58interface
-    case "java:method" => Javau58method
-    case "java:member" => Javau58member
-    case "java:unknown" => Javau58unknown
-    case "test:unit" => Testu58unit
-    case "test:integration" => Testu58integration
-    case "test:performance" => Testu58performance
-    case "test:resillience" => Testu58resillience
-    case "test:ui" => Testu58ui
-    case "test:other" => Testu58other
+object BuiltInArtefactClassifiersType {
+  def fromString(value: String, scope: scala.xml.NamespaceBinding): BuiltInArtefactClassifiersType = value match {
+    case "java:class" => JavaClass
+    case "java:type" => JavaType
+    case "java:interface" => JavaInterface
+    case "java:method" => JavaMethod
+    case "java:member" => JavaMember
+    case "java:unknown" => JavaUnknown
+    case "test:unit" => TestUnit
+    case "test:integration" => TestIntegration
+    case "test:performance" => TestPerformance
+    case "test:resillience" => TestResillience
+    case "test:ui" => TestUi
+    case "test:other" => TestOther
 
   }
 }
 
-case object Javau58class extends Builtu45inu45artefactu45classifiersType { override def toString = "java:class" }
-case object Javau58type extends Builtu45inu45artefactu45classifiersType { override def toString = "java:type" }
-case object Javau58interface extends Builtu45inu45artefactu45classifiersType { override def toString = "java:interface" }
-case object Javau58method extends Builtu45inu45artefactu45classifiersType { override def toString = "java:method" }
-case object Javau58member extends Builtu45inu45artefactu45classifiersType { override def toString = "java:member" }
-case object Javau58unknown extends Builtu45inu45artefactu45classifiersType { override def toString = "java:unknown" }
-case object Testu58unit extends Builtu45inu45artefactu45classifiersType { override def toString = "test:unit" }
-case object Testu58integration extends Builtu45inu45artefactu45classifiersType { override def toString = "test:integration" }
-case object Testu58performance extends Builtu45inu45artefactu45classifiersType { override def toString = "test:performance" }
-case object Testu58resillience extends Builtu45inu45artefactu45classifiersType { override def toString = "test:resillience" }
-case object Testu58ui extends Builtu45inu45artefactu45classifiersType { override def toString = "test:ui" }
-case object Testu58other extends Builtu45inu45artefactu45classifiersType { override def toString = "test:other" }
+case object JavaClass extends BuiltInArtefactClassifiersType { override def toString = "java:class" }
+case object JavaType extends BuiltInArtefactClassifiersType { override def toString = "java:type" }
+case object JavaInterface extends BuiltInArtefactClassifiersType { override def toString = "java:interface" }
+case object JavaMethod extends BuiltInArtefactClassifiersType { override def toString = "java:method" }
+case object JavaMember extends BuiltInArtefactClassifiersType { override def toString = "java:member" }
+case object JavaUnknown extends BuiltInArtefactClassifiersType { override def toString = "java:unknown" }
+case object TestUnit extends BuiltInArtefactClassifiersType { override def toString = "test:unit" }
+case object TestIntegration extends BuiltInArtefactClassifiersType { override def toString = "test:integration" }
+case object TestPerformance extends BuiltInArtefactClassifiersType { override def toString = "test:performance" }
+case object TestResillience extends BuiltInArtefactClassifiersType { override def toString = "test:resillience" }
+case object TestUi extends BuiltInArtefactClassifiersType { override def toString = "test:ui" }
+case object TestOther extends BuiltInArtefactClassifiersType { override def toString = "test:other" }
 

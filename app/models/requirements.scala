@@ -4,6 +4,6 @@ package models
 
 case class Requirements(req: Seq[models.RequirementType] = Nil,
   any: Seq[scalaxb.DataRecord[Any]] = Nil,
-  modelu45version: String,
+  modelVersion: String,
   attributes: Map[String, scalaxb.DataRecord[Any]])
 

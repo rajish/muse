@@ -3,7 +3,7 @@ package models
 
 
 case class Type(value: models.RequirementTypes,
-  isu45feature: Option[Boolean] = None)
+  isFeature: Option[Boolean] = None)
 
 
 case class Parent(refId: String)
@@ -13,11 +13,11 @@ trait RequirementTypes
 object RequirementTypes {
   def fromString(value: String, scope: scala.xml.NamespaceBinding): RequirementTypes = value match {
     case "business" => Business
-    case "success-criteria" => Successu45criteria
+    case "success-criteria" => SuccessCriteria
     case "assumption" => Assumption
     case "constraint" => Constraint
     case "functional" => Functional
-    case "non-functional" => Nonu45functional
+    case "non-functional" => NonFunctional
     case "architectural" => Architectural
     case "technical" => Technical
     case "inverse" => Inverse
@@ -26,11 +26,11 @@ object RequirementTypes {
 }
 
 case object Business extends RequirementTypes { override def toString = "business" }
-case object Successu45criteria extends RequirementTypes { override def toString = "success-criteria" }
+case object SuccessCriteria extends RequirementTypes { override def toString = "success-criteria" }
 case object Assumption extends RequirementTypes { override def toString = "assumption" }
 case object Constraint extends RequirementTypes { override def toString = "constraint" }
 case object Functional extends RequirementTypes { override def toString = "functional" }
-case object Nonu45functional extends RequirementTypes { override def toString = "non-functional" }
+case object NonFunctional extends RequirementTypes { override def toString = "non-functional" }
 case object Architectural extends RequirementTypes { override def toString = "architectural" }
 case object Technical extends RequirementTypes { override def toString = "technical" }
 case object Inverse extends RequirementTypes { override def toString = "inverse" }
@@ -57,15 +57,15 @@ case class RequirementType(annotation: Seq[models.AnnotationType] = Nil,
   author: Option[String] = None,
   classification: Option[models.ClassificationType] = None,
   parent: Option[models.Parent] = None,
-  requ45ref: Seq[Option[models.Requirementu45refType]] = Nil,
-  stakeholderu45ref: Seq[Option[models.Stakeholderu45refType]] = Nil,
-  externalu45link: Seq[Option[models.Externalu45linkType]] = Nil,
+  reqRef: Seq[Option[models.RequirementRefType]] = Nil,
+  stakeholderRef: Seq[Option[models.StakeholderRefType]] = Nil,
+  externalLink: Seq[Option[models.ExternalLinkType]] = Nil,
   any: Seq[scalaxb.DataRecord[Any]] = Nil,
   id: String,
   version: Double,
   strength: models.Strength,
-  creationu45date: String,
-  modificationu45date: String,
+  creationDate: String,
+  modificationDate: String,
   attributes: Map[String, scalaxb.DataRecord[Any]])
 
 
@@ -105,7 +105,7 @@ object StatusType {
     case "rejected" => Rejected
     case "withdrawn" => Withdrawn
     case "implemented" => Implemented
-    case "partially-implemented" => Partiallyu45implemented
+    case "partially-implemented" => PartiallyImplemented
     case "operational" => Operational
 
   }
@@ -117,7 +117,7 @@ case object Onhold extends StatusType { override def toString = "onhold" }
 case object Rejected extends StatusType { override def toString = "rejected" }
 case object Withdrawn extends StatusType { override def toString = "withdrawn" }
 case object Implemented extends StatusType { override def toString = "implemented" }
-case object Partiallyu45implemented extends StatusType { override def toString = "partially-implemented" }
+case object PartiallyImplemented extends StatusType { override def toString = "partially-implemented" }
 case object Operational extends StatusType { override def toString = "operational" }
 
 trait AudienceType
@@ -144,26 +144,26 @@ case object Design extends AudienceType { override def toString = "design" }
 case object Test extends AudienceType { override def toString = "test" }
 
 
-case class Actoru45refType(refId: String) extends ReferenceTypeu45groupOption
+case class ActorRefType(refId: String) extends ReferenceTypeGroupOption
 
 
-case class Stakeholderu45refType(refId: String) extends ReferenceTypeu45groupOption
+case class StakeholderRefType(refId: String) extends ReferenceTypeGroupOption
 
 
-case class Externalu45linkType(refId: String,
+case class ExternalLinkType(refId: String,
   typeValue: String,
   href: Option[String] = None)
 
 
-case class Documentu45historyType(version: Seq[models.VersionType] = Nil,
+case class DocumentHistoryType(version: Seq[models.VersionType] = Nil,
   any: Seq[scalaxb.DataRecord[Any]] = Nil,
-  currentu45version: String,
+  currentVersion: String,
   attributes: Map[String, scalaxb.DataRecord[Any]])
 
 
 case class VersionType(revision: Double,
   author: String,
-  changeu45date: String,
+  changeDate: String,
   description: models.DescriptionType,
   any: Seq[scalaxb.DataRecord[Any]] = Nil,
   attributes: Map[String, scalaxb.DataRecord[Any]])
@@ -171,8 +171,8 @@ case class VersionType(revision: Double,
 
 /** when referencing an existing requirement
 */
-case class Requirementu45refType(value: String,
-  refId: String) extends ReferenceTypeu45groupOption
+case class RequirementRefType(value: String,
+  refId: String) extends ReferenceTypeGroupOption
 
 trait Stereotype
 
@@ -196,9 +196,9 @@ case object Precedes extends Stereotype { override def toString = "precedes" }
 
 /** Used when referencing a use-case
 */
-case class Useu45caseu45refType(value: String,
+case class UseCaseRefType(value: String,
   refId: String,
-  stereotype: Option[models.Stereotype] = None) extends ReferenceTypeu45groupOption
+  stereotype: Option[models.Stereotype] = None) extends ReferenceTypeGroupOption
 
 
 /** when referencing an existing requirement
@@ -209,17 +209,19 @@ case class ReleaseRefType(value: String,
 
 /** Represents a collection of referenced requirements that are logically grouped together for documentation purposes
 */
-case class RequirementsCollectionType(requ45ref: Seq[Option[models.Requirementu45refType]] = Nil,
+case class RequirementsCollectionType(reqRef: Seq[Option[models.RequirementRefType]] = Nil,
   any: Seq[scalaxb.DataRecord[Any]] = Nil,
   attributes: Map[String, scalaxb.DataRecord[Any]])
 
 
-/** Re-usable data type that can be inserted elsewhere within other types to represent a clarification. The clarification should be a wholly owned subsiduary of the enclosing type instance.
+/** Re-usable data type that can be inserted elsewhere within other types to
+  represent a clarification. The clarification should be a wholly owned subsiduary
+  of the enclosing type instance.
 */
 case class AnnotationType(description: models.DescriptionType,
   author: String,
-  intendedu45audience: models.AudienceType,
-  creationu45date: Option[String] = None,
+  intendedAudience: models.AudienceType,
+  creationDate: Option[String] = None,
   comments: Option[models.CommentsType] = None,
   any: Seq[scalaxb.DataRecord[Any]] = Nil,
   attributes: Map[String, scalaxb.DataRecord[Any]])
@@ -232,8 +234,8 @@ case class CommentsType(comment: Seq[models.CommentType] = Nil,
 /** Re-usable block that represents a comment.
 */
 case class CommentType(description: Option[models.DescriptionType] = None,
-  commentu45author: Option[String] = None,
-  commentu45date: Option[String] = None,
+  commentAuthor: Option[String] = None,
+  commentDate: Option[String] = None,
   any: Seq[scalaxb.DataRecord[Any]] = Nil)
 
 
@@ -247,4 +249,4 @@ case class StakeholderType(title: models.TitleType,
   id: String,
   attributes: Map[String, scalaxb.DataRecord[Any]])
 
-trait ReferenceTypeu45groupOption
+trait ReferenceTypeGroupOption

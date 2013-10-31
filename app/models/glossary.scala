@@ -4,7 +4,7 @@ package models
 
 case class Glossary(entry: Seq[models.GlossaryEntryType] = Nil,
   any: Seq[scalaxb.DataRecord[Any]] = Nil,
-  modelu45version: String,
+  modelVersion: String,
   attributes: Map[String, scalaxb.DataRecord[Any]])
 
 

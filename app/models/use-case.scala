@@ -2,29 +2,29 @@
 package models
 
 
-case class Useu45caseType(annotation: Seq[models.AnnotationType] = Nil,
+case class UseCaseType(annotation: Seq[models.AnnotationType] = Nil,
   description: models.DescriptionType,
-  documentu45history: models.Documentu45historyType,
-  useu45caseu45properties: models.Useu45caseu45propertiesType,
-  mainu45flow: models.MainSequenceType,
-  alternateu45flows: Option[models.Alternateu45flowsType] = None,
-  exceptionu45flows: Option[models.Exceptionu45flowsType] = None,
-  businessu45rules: Option[models.RequirementsCollectionType] = None,
+  documentHistory: models.DocumentHistoryType,
+  useCaseProperties: models.UseCasePropertiesType,
+  mainFlow: models.MainSequenceType,
+  alternateFlows: Option[models.AlternateFlowsType] = None,
+  exceptionFlows: Option[models.ExceptionFlowsType] = None,
+  businessRules: Option[models.RequirementsCollectionType] = None,
   any: Seq[scalaxb.DataRecord[Any]] = Nil,
   id: String,
   name: String,
-  modelu45version: String,
+  modelVersion: String,
   attributes: Map[String, scalaxb.DataRecord[Any]])
 
 
-case class Useu45caseu45propertiesType(annotation: Seq[models.AnnotationType] = Nil,
+case class UseCasePropertiesType(annotation: Seq[models.AnnotationType] = Nil,
   trigger: models.DescriptionType,
   goal: models.DescriptionType,
-  primaryu45actor: Seq[models.Actoru45refType] = Nil,
-  secondaryu45actor: Seq[models.Actoru45refType] = Nil,
-  preu45requisites: models.DescriptionType,
-  successu45outcome: models.DescriptionType,
-  failureu45outcome: models.DescriptionType,
+  primaryActor: Seq[models.ActorRefType] = Nil,
+  secondaryActor: Seq[models.ActorRefType] = Nil,
+  preRequisites: models.DescriptionType,
+  successOutcome: models.DescriptionType,
+  failureOutcome: models.DescriptionType,
   priority: String,
   complexity: BigInt,
   taxonomy: Seq[models.TaxonomyType] = Nil,
@@ -57,7 +57,7 @@ case class MainSequenceType(annotation: Seq[models.AnnotationType] = Nil,
   attributes: Map[String, scalaxb.DataRecord[Any]]) extends SequenceTypable
 
 
-case class Rejoin(atu45step: String)
+case class Rejoin(atStep: String)
 
 
 /** 
@@ -77,24 +77,24 @@ trait AlternateSequenceTypeOption
 
 case class StepType(annotation: Seq[models.AnnotationType] = Nil,
   description: models.DescriptionType,
-  proposedu45release: Option[models.ReleaseRefType] = None,
-  refu45alternateu45flow: Seq[models.Refu45alternateu45flowsType] = Nil,
-  refu45exceptionu45flow: Seq[models.Refu45alternateu45flowsType] = Nil,
+  proposedRelease: Option[models.ReleaseRefType] = None,
+  refAlternateFlow: Seq[models.RefAlternateFlowsType] = Nil,
+  refExceptionFlow: Seq[models.RefAlternateFlowsType] = Nil,
   any: Seq[scalaxb.DataRecord[Any]] = Nil,
-  stepu45id: String,
+  stepId: String,
   attributes: Map[String, scalaxb.DataRecord[Any]])
 
 
-case class Alternateu45flowsType(alternateu45flow: Seq[models.AlternateSequenceType] = Nil,
+case class AlternateFlowsType(alternateFlow: Seq[models.AlternateSequenceType] = Nil,
   any: Seq[scalaxb.DataRecord[Any]] = Nil,
   attributes: Map[String, scalaxb.DataRecord[Any]])
 
 
-case class Refu45alternateu45flowsType(refId: String,
+case class RefAlternateFlowsType(refId: String,
   condition: String)
 
 
-case class Exceptionu45flowsType(exceptionu45flow: Seq[models.AlternateSequenceType] = Nil,
+case class ExceptionFlowsType(exceptionFlow: Seq[models.AlternateSequenceType] = Nil,
   any: Seq[scalaxb.DataRecord[Any]] = Nil,
   attributes: Map[String, scalaxb.DataRecord[Any]])
 

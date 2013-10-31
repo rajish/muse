@@ -3,7 +3,7 @@ package models
 
 
 case class Actors(actor: Seq[models.ActorType] = Nil,
-  modelu45version: String,
+  modelVersion: String,
   attributes: Map[String, scalaxb.DataRecord[Any]])
 
 

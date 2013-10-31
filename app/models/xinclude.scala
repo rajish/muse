@@ -8,7 +8,7 @@ case class IncludeType(mixed: Seq[scalaxb.DataRecord[Any]] = Nil,
   xpointer: Option[String] = None,
   encoding: Option[String] = None,
   accept: Option[String] = None,
-  acceptu45language: Option[String] = None,
+  acceptLanguage: Option[String] = None,
   attributes: Map[String, scalaxb.DataRecord[Any]]) extends FallbackTypeOption
 
 trait IncludeTypeOption

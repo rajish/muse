@@ -31,14 +31,14 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
   implicit lazy val ModelsPackageTypeFormat: scalaxb.XMLFormat[models.PackageType] = new DefaultModelsPackageTypeFormat {}
   implicit lazy val ModelsStatusTypeFormat: scalaxb.XMLFormat[models.StatusType] = new DefaultModelsStatusTypeFormat {}
   implicit lazy val ModelsAudienceTypeFormat: scalaxb.XMLFormat[models.AudienceType] = new DefaultModelsAudienceTypeFormat {}
-  implicit lazy val ModelsActoru45refTypeFormat: scalaxb.XMLFormat[models.Actoru45refType] = new DefaultModelsActoru45refTypeFormat {}
-  implicit lazy val ModelsStakeholderu45refTypeFormat: scalaxb.XMLFormat[models.Stakeholderu45refType] = new DefaultModelsStakeholderu45refTypeFormat {}
-  implicit lazy val ModelsExternalu45linkTypeFormat: scalaxb.XMLFormat[models.Externalu45linkType] = new DefaultModelsExternalu45linkTypeFormat {}
-  implicit lazy val ModelsDocumentu45historyTypeFormat: scalaxb.XMLFormat[models.Documentu45historyType] = new DefaultModelsDocumentu45historyTypeFormat {}
+  implicit lazy val ModelsActorRefTypeFormat: scalaxb.XMLFormat[models.ActorRefType] = new DefaultModelsActorRefTypeFormat {}
+  implicit lazy val ModelsStakeholderRefTypeFormat: scalaxb.XMLFormat[models.StakeholderRefType] = new DefaultModelsStakeholderRefTypeFormat {}
+  implicit lazy val ModelsExternalLinkTypeFormat: scalaxb.XMLFormat[models.ExternalLinkType] = new DefaultModelsExternalLinkTypeFormat {}
+  implicit lazy val ModelsDocumentHistoryTypeFormat: scalaxb.XMLFormat[models.DocumentHistoryType] = new DefaultModelsDocumentHistoryTypeFormat {}
   implicit lazy val ModelsVersionTypeFormat: scalaxb.XMLFormat[models.VersionType] = new DefaultModelsVersionTypeFormat {}
-  implicit lazy val ModelsRequirementu45refTypeFormat: scalaxb.XMLFormat[models.Requirementu45refType] = new DefaultModelsRequirementu45refTypeFormat {}
+  implicit lazy val ModelsRequirementRefTypeFormat: scalaxb.XMLFormat[models.RequirementRefType] = new DefaultModelsRequirementRefTypeFormat {}
   implicit lazy val ModelsStereotypeFormat: scalaxb.XMLFormat[models.Stereotype] = new DefaultModelsStereotypeFormat {}
-  implicit lazy val ModelsUseu45caseu45refTypeFormat: scalaxb.XMLFormat[models.Useu45caseu45refType] = new DefaultModelsUseu45caseu45refTypeFormat {}
+  implicit lazy val ModelsUseCaseRefTypeFormat: scalaxb.XMLFormat[models.UseCaseRefType] = new DefaultModelsUseCaseRefTypeFormat {}
   implicit lazy val ModelsReleaseRefTypeFormat: scalaxb.XMLFormat[models.ReleaseRefType] = new DefaultModelsReleaseRefTypeFormat {}
   implicit lazy val ModelsRequirementsCollectionTypeFormat: scalaxb.XMLFormat[models.RequirementsCollectionType] = new DefaultModelsRequirementsCollectionTypeFormat {}
   implicit lazy val ModelsAnnotationTypeFormat: scalaxb.XMLFormat[models.AnnotationType] = new DefaultModelsAnnotationTypeFormat {}
@@ -52,22 +52,22 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
   implicit lazy val ModelsGlossaryEntryTypeFormat: scalaxb.XMLFormat[models.GlossaryEntryType] = new DefaultModelsGlossaryEntryTypeFormat {}
   implicit lazy val ModelsRequirementsFormat: scalaxb.XMLFormat[models.Requirements] = new DefaultModelsRequirementsFormat {}
   implicit lazy val ModelsStakeholdersFormat: scalaxb.XMLFormat[models.Stakeholders] = new DefaultModelsStakeholdersFormat {}
-  implicit lazy val ModelsTraceu45reportTypeFormat: scalaxb.XMLFormat[models.Traceu45reportType] = new DefaultModelsTraceu45reportTypeFormat {}
+  implicit lazy val ModelsTraceReportTypeFormat: scalaxb.XMLFormat[models.TraceReportType] = new DefaultModelsTraceReportTypeFormat {}
   implicit lazy val ModelsClassFormat: scalaxb.XMLFormat[models.Class] = new DefaultModelsClassFormat {}
-  implicit lazy val ModelsTraceu45toFormat: scalaxb.XMLFormat[models.Traceu45to] = new DefaultModelsTraceu45toFormat {}
+  implicit lazy val ModelsTraceToFormat: scalaxb.XMLFormat[models.TraceTo] = new DefaultModelsTraceToFormat {}
   implicit lazy val ModelsArtefactTypeFormat: scalaxb.XMLFormat[models.ArtefactType] = new DefaultModelsArtefactTypeFormat {}
-  implicit lazy val ModelsBuiltu45inu45artefactu45classifiersTypeFormat: scalaxb.XMLFormat[models.Builtu45inu45artefactu45classifiersType] = new DefaultModelsBuiltu45inu45artefactu45classifiersTypeFormat {}
-  implicit lazy val ModelsUseu45caseTypeFormat: scalaxb.XMLFormat[models.Useu45caseType] = new DefaultModelsUseu45caseTypeFormat {}
-  implicit lazy val ModelsUseu45caseu45propertiesTypeFormat: scalaxb.XMLFormat[models.Useu45caseu45propertiesType] = new DefaultModelsUseu45caseu45propertiesTypeFormat {}
+  implicit lazy val ModelsBuiltInArtefactClassifiersTypeFormat: scalaxb.XMLFormat[models.BuiltInArtefactClassifiersType] = new DefaultModelsBuiltInArtefactClassifiersTypeFormat {}
+  implicit lazy val ModelsUseCaseTypeFormat: scalaxb.XMLFormat[models.UseCaseType] = new DefaultModelsUseCaseTypeFormat {}
+  implicit lazy val ModelsUseCasePropertiesTypeFormat: scalaxb.XMLFormat[models.UseCasePropertiesType] = new DefaultModelsUseCasePropertiesTypeFormat {}
   implicit lazy val ModelsSequenceTypableFormat: scalaxb.XMLFormat[models.SequenceTypable] = new DefaultModelsSequenceTypableFormat {}
   implicit lazy val ModelsSequenceTypeFormat: scalaxb.XMLFormat[models.SequenceType] = new DefaultModelsSequenceTypeFormat {}
   implicit lazy val ModelsMainSequenceTypeFormat: scalaxb.XMLFormat[models.MainSequenceType] = new DefaultModelsMainSequenceTypeFormat {}
   implicit lazy val ModelsRejoinFormat: scalaxb.XMLFormat[models.Rejoin] = new DefaultModelsRejoinFormat {}
   implicit lazy val ModelsAlternateSequenceTypeFormat: scalaxb.XMLFormat[models.AlternateSequenceType] = new DefaultModelsAlternateSequenceTypeFormat {}
   implicit lazy val ModelsStepTypeFormat: scalaxb.XMLFormat[models.StepType] = new DefaultModelsStepTypeFormat {}
-  implicit lazy val ModelsAlternateu45flowsTypeFormat: scalaxb.XMLFormat[models.Alternateu45flowsType] = new DefaultModelsAlternateu45flowsTypeFormat {}
-  implicit lazy val ModelsRefu45alternateu45flowsTypeFormat: scalaxb.XMLFormat[models.Refu45alternateu45flowsType] = new DefaultModelsRefu45alternateu45flowsTypeFormat {}
-  implicit lazy val ModelsExceptionu45flowsTypeFormat: scalaxb.XMLFormat[models.Exceptionu45flowsType] = new DefaultModelsExceptionu45flowsTypeFormat {}
+  implicit lazy val ModelsAlternateFlowsTypeFormat: scalaxb.XMLFormat[models.AlternateFlowsType] = new DefaultModelsAlternateFlowsTypeFormat {}
+  implicit lazy val ModelsRefAlternateFlowsTypeFormat: scalaxb.XMLFormat[models.RefAlternateFlowsType] = new DefaultModelsRefAlternateFlowsTypeFormat {}
+  implicit lazy val ModelsExceptionFlowsTypeFormat: scalaxb.XMLFormat[models.ExceptionFlowsType] = new DefaultModelsExceptionFlowsTypeFormat {}
   implicit lazy val ModelsIncludeTypeFormat: scalaxb.XMLFormat[models.IncludeType] = new DefaultModelsIncludeTypeFormat {}
   implicit lazy val ModelsParseTypeFormat: scalaxb.XMLFormat[models.ParseType] = new DefaultModelsParseTypeFormat {}
   implicit lazy val ModelsFallbackTypeFormat: scalaxb.XMLFormat[models.FallbackType] = new DefaultModelsFallbackTypeFormat {}
@@ -96,7 +96,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     
     override def writesAttribute(__obj: models.Actors, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
-      attr = scala.xml.Attribute(null, "model-version", __obj.modelu45version.toString, attr)
+      attr = scala.xml.Attribute(null, "model-version", __obj.modelVersion.toString, attr)
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
@@ -181,7 +181,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     
     override def writesAttribute(__obj: models.Type, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
-      __obj.isu45feature foreach { x => attr = scala.xml.Attribute(null, "is-feature", x.toString, attr) }
+      __obj.isFeature foreach { x => attr = scala.xml.Attribute(null, "is-feature", x.toString, attr) }
       attr
     }
 
@@ -267,9 +267,9 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
         p4.headOption map { scalaxb.fromXML[String](_, scalaxb.ElemName(node) :: stack) },
         p5.headOption map { scalaxb.fromXML[models.ClassificationType](_, scalaxb.ElemName(node) :: stack) },
         p6.headOption map { scalaxb.fromXML[models.Parent](_, scalaxb.ElemName(node) :: stack) },
-        p7.toSeq map { _.nilOption map { scalaxb.fromXML[models.Requirementu45refType](_, scalaxb.ElemName(node) :: stack) }},
-        p8.toSeq map { _.nilOption map { scalaxb.fromXML[models.Stakeholderu45refType](_, scalaxb.ElemName(node) :: stack) }},
-        p9.toSeq map { _.nilOption map { scalaxb.fromXML[models.Externalu45linkType](_, scalaxb.ElemName(node) :: stack) }},
+        p7.toSeq map { _.nilOption map { scalaxb.fromXML[models.RequirementRefType](_, scalaxb.ElemName(node) :: stack) }},
+        p8.toSeq map { _.nilOption map { scalaxb.fromXML[models.StakeholderRefType](_, scalaxb.ElemName(node) :: stack) }},
+        p9.toSeq map { _.nilOption map { scalaxb.fromXML[models.ExternalLinkType](_, scalaxb.ElemName(node) :: stack) }},
         p10.toSeq map { scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack) },
         scalaxb.fromXML[String]((node \ "@id"), scalaxb.ElemName(node) :: stack),
         scalaxb.fromXML[Double]((node \ "@version"), scalaxb.ElemName(node) :: stack),
@@ -299,8 +299,8 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
       attr = scala.xml.Attribute(null, "id", __obj.id.toString, attr)
       attr = scala.xml.Attribute(null, "version", __obj.version.toString, attr)
       attr = scala.xml.Attribute(null, "strength", __obj.strength.toString, attr)
-      attr = scala.xml.Attribute(null, "creation-date", __obj.creationu45date.toString, attr)
-      attr = scala.xml.Attribute(null, "modification-date", __obj.modificationu45date.toString, attr)
+      attr = scala.xml.Attribute(null, "creation-date", __obj.creationDate.toString, attr)
+      attr = scala.xml.Attribute(null, "modification-date", __obj.modificationDate.toString, attr)
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
@@ -313,14 +313,14 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
         __obj.author map { scalaxb.toXML[String](_, Some("http://xuse.sourceforge.net"), Some("author"), __scope, false) } getOrElse {Nil},
         __obj.classification map { scalaxb.toXML[models.ClassificationType](_, Some("http://xuse.sourceforge.net"), Some("classification"), __scope, false) } getOrElse {Nil},
         __obj.parent map { scalaxb.toXML[models.Parent](_, Some("http://xuse.sourceforge.net"), Some("parent"), __scope, false) } getOrElse {Nil},
-        __obj.requ45ref flatMap { scalaxb.toXML[Option[models.Requirementu45refType]](_, Some("http://xuse.sourceforge.net"), Some("req-ref"), __scope, false) },
-        __obj.stakeholderu45ref flatMap { scalaxb.toXML[Option[models.Stakeholderu45refType]](_, Some("http://xuse.sourceforge.net"), Some("stakeholder-ref"), __scope, false) },
-        __obj.externalu45link flatMap { scalaxb.toXML[Option[models.Externalu45linkType]](_, Some("http://xuse.sourceforge.net"), Some("external-link"), __scope, false) },
+        __obj.reqRef flatMap { scalaxb.toXML[Option[models.RequirementRefType]](_, Some("http://xuse.sourceforge.net"), Some("req-ref"), __scope, false) },
+        __obj.stakeholderRef flatMap { scalaxb.toXML[Option[models.StakeholderRefType]](_, Some("http://xuse.sourceforge.net"), Some("stakeholder-ref"), __scope, false) },
+        __obj.externalLink flatMap { scalaxb.toXML[Option[models.ExternalLinkType]](_, Some("http://xuse.sourceforge.net"), Some("external-link"), __scope, false) },
         __obj.any flatMap { x => scalaxb.toXML[scalaxb.DataRecord[Any]](x, x.namespace, x.key, __scope, true) })
 
   }
 
-  trait DefaultModelsTitleTypeFormat extends scalaxb.ElemNameParser[models.TitleType] with ModelsReplacementu45textu45elementsu45groupGroupFormat {
+  trait DefaultModelsTitleTypeFormat extends scalaxb.ElemNameParser[models.TitleType] with ModelsReplacementTextElementsGroupGroupFormat {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     
     override def typeName: Option[String] = Some("titleType")
@@ -329,7 +329,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
 
     def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.TitleType] =
       phrase(optTextRecord ~ 
-      rep((parsemixedReplacementu45textu45elementsu45groupGroup(node, scalaxb.ElemName(node) :: stack))) ~ 
+      rep((parsemixedReplacementTextElementsGroupGroup(node, scalaxb.ElemName(node) :: stack))) ~ 
       optTextRecord ^^
       { case p1 ~ p2 ~ p3 =>
       models.TitleType(Seq.concat(p1.toList,
@@ -341,7 +341,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
 
   }
 
-  trait DefaultModelsDescriptionTypeFormat extends scalaxb.ElemNameParser[models.DescriptionType] with ModelsReferenceTypeu45groupGroupFormat with ModelsReplacementu45textu45elementsu45groupGroupFormat {
+  trait DefaultModelsDescriptionTypeFormat extends scalaxb.ElemNameParser[models.DescriptionType] with ModelsReferenceTypeGroupGroupFormat with ModelsReplacementTextElementsGroupGroupFormat {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     
     override def typeName: Option[String] = Some("descriptionType")
@@ -350,8 +350,8 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
 
     def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.DescriptionType] =
       phrase(optTextRecord ~ 
-      rep(((parsemixedReferenceTypeu45groupGroup(node, scalaxb.ElemName(node) :: stack)) ||| 
-      (parsemixedReplacementu45textu45elementsu45groupGroup(node, scalaxb.ElemName(node) :: stack))) | 
+      rep(((parsemixedReferenceTypeGroupGroup(node, scalaxb.ElemName(node) :: stack)) ||| 
+      (parsemixedReplacementTextElementsGroupGroup(node, scalaxb.ElemName(node) :: stack))) | 
       (((any(_.namespace != Some("http://xuse.sourceforge.net")) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack))) ~ 
       optTextRecord) ^^ 
       { case p1 ~ p2 => Seq.concat(Seq(p1), p2.toList) })) ~ 
@@ -517,60 +517,60 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
         scala.xml.Null, __scope, scala.xml.Text(__obj.toString))
   }
 
-  trait DefaultModelsActoru45refTypeFormat extends scalaxb.XMLFormat[models.Actoru45refType] with scalaxb.CanWriteChildNodes[models.Actoru45refType] {
+  trait DefaultModelsActorRefTypeFormat extends scalaxb.XMLFormat[models.ActorRefType] with scalaxb.CanWriteChildNodes[models.ActorRefType] {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     import scalaxb.ElemName._
     
-    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.Actoru45refType] = seq match {
-      case node: scala.xml.Node => Right(models.Actoru45refType(scalaxb.fromXML[String]((node \ "@refId"), scalaxb.ElemName(node) :: stack)))
+    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.ActorRefType] = seq match {
+      case node: scala.xml.Node => Right(models.ActorRefType(scalaxb.fromXML[String]((node \ "@refId"), scalaxb.ElemName(node) :: stack)))
       case _ => Left("reads failed: seq must be scala.xml.Node")
     }
     
-    override def writesAttribute(__obj: models.Actoru45refType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.ActorRefType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       attr = scala.xml.Attribute(null, "refId", __obj.refId.toString, attr)
       attr
     }
 
-    def writesChildNodes(__obj: models.Actoru45refType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+    def writesChildNodes(__obj: models.ActorRefType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Nil
 
 
   }
 
-  trait DefaultModelsStakeholderu45refTypeFormat extends scalaxb.XMLFormat[models.Stakeholderu45refType] with scalaxb.CanWriteChildNodes[models.Stakeholderu45refType] {
+  trait DefaultModelsStakeholderRefTypeFormat extends scalaxb.XMLFormat[models.StakeholderRefType] with scalaxb.CanWriteChildNodes[models.StakeholderRefType] {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     import scalaxb.ElemName._
     
-    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.Stakeholderu45refType] = seq match {
-      case node: scala.xml.Node => Right(models.Stakeholderu45refType(scalaxb.fromXML[String]((node \ "@refId"), scalaxb.ElemName(node) :: stack)))
+    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.StakeholderRefType] = seq match {
+      case node: scala.xml.Node => Right(models.StakeholderRefType(scalaxb.fromXML[String]((node \ "@refId"), scalaxb.ElemName(node) :: stack)))
       case _ => Left("reads failed: seq must be scala.xml.Node")
     }
     
-    override def writesAttribute(__obj: models.Stakeholderu45refType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.StakeholderRefType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       attr = scala.xml.Attribute(null, "refId", __obj.refId.toString, attr)
       attr
     }
 
-    def writesChildNodes(__obj: models.Stakeholderu45refType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+    def writesChildNodes(__obj: models.StakeholderRefType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Nil
 
 
   }
 
-  trait DefaultModelsExternalu45linkTypeFormat extends scalaxb.XMLFormat[models.Externalu45linkType] with scalaxb.CanWriteChildNodes[models.Externalu45linkType] {
+  trait DefaultModelsExternalLinkTypeFormat extends scalaxb.XMLFormat[models.ExternalLinkType] with scalaxb.CanWriteChildNodes[models.ExternalLinkType] {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     import scalaxb.ElemName._
     
-    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.Externalu45linkType] = seq match {
-      case node: scala.xml.Node => Right(models.Externalu45linkType(scalaxb.fromXML[String]((node \ "@refId"), scalaxb.ElemName(node) :: stack),
+    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.ExternalLinkType] = seq match {
+      case node: scala.xml.Node => Right(models.ExternalLinkType(scalaxb.fromXML[String]((node \ "@refId"), scalaxb.ElemName(node) :: stack),
         scalaxb.fromXML[String]((node \ "@type"), scalaxb.ElemName(node) :: stack),
         (node \ "@href").headOption map { scalaxb.fromXML[String](_, scalaxb.ElemName(node) :: stack) }))
       case _ => Left("reads failed: seq must be scala.xml.Node")
     }
     
-    override def writesAttribute(__obj: models.Externalu45linkType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.ExternalLinkType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       attr = scala.xml.Attribute(null, "refId", __obj.refId.toString, attr)
       attr = scala.xml.Attribute(null, "type", __obj.typeValue.toString, attr)
@@ -578,22 +578,22 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
       attr
     }
 
-    def writesChildNodes(__obj: models.Externalu45linkType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+    def writesChildNodes(__obj: models.ExternalLinkType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Nil
 
 
   }
 
-  trait DefaultModelsDocumentu45historyTypeFormat extends scalaxb.ElemNameParser[models.Documentu45historyType] {
+  trait DefaultModelsDocumentHistoryTypeFormat extends scalaxb.ElemNameParser[models.DocumentHistoryType] {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     
     override def typeName: Option[String] = Some("document-historyType")
 
-    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.Documentu45historyType] =
+    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.DocumentHistoryType] =
       phrase(rep(scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "version")) ~ 
       rep(any(_.namespace != Some("http://xuse.sourceforge.net"))) ^^
       { case p1 ~ p2 =>
-      models.Documentu45historyType(p1.toSeq map { scalaxb.fromXML[models.VersionType](_, scalaxb.ElemName(node) :: stack) },
+      models.DocumentHistoryType(p1.toSeq map { scalaxb.fromXML[models.VersionType](_, scalaxb.ElemName(node) :: stack) },
         p2.toSeq map { scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack) },
         scalaxb.fromXML[String]((node \ "@current-version"), scalaxb.ElemName(node) :: stack),
         scala.collection.immutable.ListMap((node match {
@@ -610,15 +610,15 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
           case _ => Nil
         }): _*)) })
     
-    override def writesAttribute(__obj: models.Documentu45historyType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.DocumentHistoryType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
-      attr = scala.xml.Attribute(null, "current-version", __obj.currentu45version.toString, attr)
+      attr = scala.xml.Attribute(null, "current-version", __obj.currentVersion.toString, attr)
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
     }
 
-    def writesChildNodes(__obj: models.Documentu45historyType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+    def writesChildNodes(__obj: models.DocumentHistoryType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Seq.concat(__obj.version flatMap { scalaxb.toXML[models.VersionType](_, Some("http://xuse.sourceforge.net"), Some("version"), __scope, false) },
         __obj.any flatMap { x => scalaxb.toXML[scalaxb.DataRecord[Any]](x, x.namespace, x.key, __scope, true) })
 
@@ -665,29 +665,29 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     def writesChildNodes(__obj: models.VersionType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Seq.concat(scalaxb.toXML[Double](__obj.revision, Some("http://xuse.sourceforge.net"), Some("revision"), __scope, false),
         scalaxb.toXML[String](__obj.author, Some("http://xuse.sourceforge.net"), Some("author"), __scope, false),
-        scalaxb.toXML[String](__obj.changeu45date, Some("http://xuse.sourceforge.net"), Some("change-date"), __scope, false),
+        scalaxb.toXML[String](__obj.changeDate, Some("http://xuse.sourceforge.net"), Some("change-date"), __scope, false),
         scalaxb.toXML[models.DescriptionType](__obj.description, Some("http://xuse.sourceforge.net"), Some("description"), __scope, false),
         __obj.any flatMap { x => scalaxb.toXML[scalaxb.DataRecord[Any]](x, x.namespace, x.key, __scope, true) })
 
   }
 
-  trait DefaultModelsRequirementu45refTypeFormat extends scalaxb.XMLFormat[models.Requirementu45refType] with scalaxb.CanWriteChildNodes[models.Requirementu45refType] {
+  trait DefaultModelsRequirementRefTypeFormat extends scalaxb.XMLFormat[models.RequirementRefType] with scalaxb.CanWriteChildNodes[models.RequirementRefType] {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     import scalaxb.ElemName._
     
-    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.Requirementu45refType] = seq match {
-      case node: scala.xml.Node => Right(models.Requirementu45refType(scalaxb.fromXML[String](node, scalaxb.ElemName(node) :: stack),
+    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.RequirementRefType] = seq match {
+      case node: scala.xml.Node => Right(models.RequirementRefType(scalaxb.fromXML[String](node, scalaxb.ElemName(node) :: stack),
         scalaxb.fromXML[String]((node \ "@refId"), scalaxb.ElemName(node) :: stack)))
       case _ => Left("reads failed: seq must be scala.xml.Node")
     }
     
-    override def writesAttribute(__obj: models.Requirementu45refType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.RequirementRefType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       attr = scala.xml.Attribute(null, "refId", __obj.refId.toString, attr)
       attr
     }
 
-    def writesChildNodes(__obj: models.Requirementu45refType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+    def writesChildNodes(__obj: models.RequirementRefType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Seq(scala.xml.Text(__obj.value.toString))
 
 
@@ -709,25 +709,25 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
         scala.xml.Null, __scope, scala.xml.Text(__obj.toString))
   }
 
-  trait DefaultModelsUseu45caseu45refTypeFormat extends scalaxb.XMLFormat[models.Useu45caseu45refType] with scalaxb.CanWriteChildNodes[models.Useu45caseu45refType] {
+  trait DefaultModelsUseCaseRefTypeFormat extends scalaxb.XMLFormat[models.UseCaseRefType] with scalaxb.CanWriteChildNodes[models.UseCaseRefType] {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     import scalaxb.ElemName._
     
-    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.Useu45caseu45refType] = seq match {
-      case node: scala.xml.Node => Right(models.Useu45caseu45refType(scalaxb.fromXML[String](node, scalaxb.ElemName(node) :: stack),
+    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.UseCaseRefType] = seq match {
+      case node: scala.xml.Node => Right(models.UseCaseRefType(scalaxb.fromXML[String](node, scalaxb.ElemName(node) :: stack),
         scalaxb.fromXML[String]((node \ "@refId"), scalaxb.ElemName(node) :: stack),
         (node \ "@stereotype").headOption map { scalaxb.fromXML[models.Stereotype](_, scalaxb.ElemName(node) :: stack) }))
       case _ => Left("reads failed: seq must be scala.xml.Node")
     }
     
-    override def writesAttribute(__obj: models.Useu45caseu45refType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.UseCaseRefType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       attr = scala.xml.Attribute(null, "refId", __obj.refId.toString, attr)
       __obj.stereotype foreach { x => attr = scala.xml.Attribute(null, "stereotype", x.toString, attr) }
       attr
     }
 
-    def writesChildNodes(__obj: models.Useu45caseu45refType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+    def writesChildNodes(__obj: models.UseCaseRefType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Seq(scala.xml.Text(__obj.value.toString))
 
 
@@ -764,7 +764,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
       phrase(rep(scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "req-ref")) ~ 
       rep(any(_.namespace != Some("http://xuse.sourceforge.net"))) ^^
       { case p1 ~ p2 =>
-      models.RequirementsCollectionType(p1.toSeq map { _.nilOption map { scalaxb.fromXML[models.Requirementu45refType](_, scalaxb.ElemName(node) :: stack) }},
+      models.RequirementsCollectionType(p1.toSeq map { _.nilOption map { scalaxb.fromXML[models.RequirementRefType](_, scalaxb.ElemName(node) :: stack) }},
         p2.toSeq map { scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack) },
         scala.collection.immutable.ListMap((node match {
           case elem: scala.xml.Elem =>
@@ -788,7 +788,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     }
 
     def writesChildNodes(__obj: models.RequirementsCollectionType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
-      Seq.concat(__obj.requ45ref flatMap { scalaxb.toXML[Option[models.Requirementu45refType]](_, Some("http://xuse.sourceforge.net"), Some("req-ref"), __scope, false) },
+      Seq.concat(__obj.reqRef flatMap { scalaxb.toXML[Option[models.RequirementRefType]](_, Some("http://xuse.sourceforge.net"), Some("req-ref"), __scope, false) },
         __obj.any flatMap { x => scalaxb.toXML[scalaxb.DataRecord[Any]](x, x.namespace, x.key, __scope, true) })
 
   }
@@ -836,8 +836,8 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     def writesChildNodes(__obj: models.AnnotationType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Seq.concat(scalaxb.toXML[models.DescriptionType](__obj.description, Some("http://xuse.sourceforge.net"), Some("description"), __scope, false),
         scalaxb.toXML[String](__obj.author, Some("http://xuse.sourceforge.net"), Some("author"), __scope, false),
-        scalaxb.toXML[models.AudienceType](__obj.intendedu45audience, Some("http://xuse.sourceforge.net"), Some("intended-audience"), __scope, false),
-        __obj.creationu45date map { scalaxb.toXML[String](_, Some("http://xuse.sourceforge.net"), Some("creation-date"), __scope, false) } getOrElse {Nil},
+        scalaxb.toXML[models.AudienceType](__obj.intendedAudience, Some("http://xuse.sourceforge.net"), Some("intended-audience"), __scope, false),
+        __obj.creationDate map { scalaxb.toXML[String](_, Some("http://xuse.sourceforge.net"), Some("creation-date"), __scope, false) } getOrElse {Nil},
         __obj.comments map { scalaxb.toXML[models.CommentsType](_, Some("http://xuse.sourceforge.net"), Some("comments"), __scope, false) } getOrElse {Nil},
         __obj.any flatMap { x => scalaxb.toXML[scalaxb.DataRecord[Any]](x, x.namespace, x.key, __scope, true) })
 
@@ -879,8 +879,8 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     
     def writesChildNodes(__obj: models.CommentType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Seq.concat(__obj.description map { scalaxb.toXML[models.DescriptionType](_, Some("http://xuse.sourceforge.net"), Some("description"), __scope, false) } getOrElse {Nil},
-        __obj.commentu45author map { scalaxb.toXML[String](_, Some("http://xuse.sourceforge.net"), Some("comment-author"), __scope, false) } getOrElse {Nil},
-        __obj.commentu45date map { scalaxb.toXML[String](_, Some("http://xuse.sourceforge.net"), Some("comment-date"), __scope, false) } getOrElse {Nil},
+        __obj.commentAuthor map { scalaxb.toXML[String](_, Some("http://xuse.sourceforge.net"), Some("comment-author"), __scope, false) } getOrElse {Nil},
+        __obj.commentDate map { scalaxb.toXML[String](_, Some("http://xuse.sourceforge.net"), Some("comment-date"), __scope, false) } getOrElse {Nil},
         __obj.any flatMap { x => scalaxb.toXML[scalaxb.DataRecord[Any]](x, x.namespace, x.key, __scope, true) })
 
   }
@@ -937,45 +937,45 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
 
 /** Group of all the different reference elements that can be created within Xuse
 */
-  trait ModelsReferenceTypeu45groupGroupFormat extends scalaxb.AnyElemNameParser {
-    def parseReferenceTypeu45groupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[scalaxb.DataRecord[Option[models.ReferenceTypeu45groupOption]]] =
+  trait ModelsReferenceTypeGroupGroupFormat extends scalaxb.AnyElemNameParser {
+    def parseReferenceTypeGroupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[scalaxb.DataRecord[Option[models.ReferenceTypeGroupOption]]] =
       (((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "uc-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.Useu45caseu45refType](_, scalaxb.ElemName(node) :: stack)}))) | 
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.UseCaseRefType](_, scalaxb.ElemName(node) :: stack)}))) | 
       ((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "req-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.Requirementu45refType](_, scalaxb.ElemName(node) :: stack)}))) | 
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.RequirementRefType](_, scalaxb.ElemName(node) :: stack)}))) | 
       ((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "actor-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.Actoru45refType](_, scalaxb.ElemName(node) :: stack)}))) | 
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.ActorRefType](_, scalaxb.ElemName(node) :: stack)}))) | 
       ((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "stakeholder-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.Stakeholderu45refType](_, scalaxb.ElemName(node) :: stack)}))))
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.StakeholderRefType](_, scalaxb.ElemName(node) :: stack)}))))
   
-    def parseReferenceTypeu45groupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName], wrap: Boolean): Parser[scalaxb.DataRecord[Option[models.ReferenceTypeu45groupOption]]] =
+    def parseReferenceTypeGroupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName], wrap: Boolean): Parser[scalaxb.DataRecord[Option[models.ReferenceTypeGroupOption]]] =
       (((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "uc-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.Useu45caseu45refType](_, scalaxb.ElemName(node) :: stack)}))) | 
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.UseCaseRefType](_, scalaxb.ElemName(node) :: stack)}))) | 
       ((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "req-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.Requirementu45refType](_, scalaxb.ElemName(node) :: stack)}))) | 
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.RequirementRefType](_, scalaxb.ElemName(node) :: stack)}))) | 
       ((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "actor-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.Actoru45refType](_, scalaxb.ElemName(node) :: stack)}))) | 
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.ActorRefType](_, scalaxb.ElemName(node) :: stack)}))) | 
       ((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "stakeholder-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.Stakeholderu45refType](_, scalaxb.ElemName(node) :: stack)}))))
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.StakeholderRefType](_, scalaxb.ElemName(node) :: stack)}))))
     
-    def parsemixedReferenceTypeu45groupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[Seq[scalaxb.DataRecord[Any]]] =
+    def parsemixedReferenceTypeGroupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[Seq[scalaxb.DataRecord[Any]]] =
       (((((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "uc-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.Useu45caseu45refType](_, scalaxb.ElemName(node) :: stack)}))) ~ 
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.UseCaseRefType](_, scalaxb.ElemName(node) :: stack)}))) ~ 
       optTextRecord) ^^ 
         { case p1 ~ p2 => Seq.concat(Seq(p1),
         p2.toList) }) ||| 
       ((((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "req-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.Requirementu45refType](_, scalaxb.ElemName(node) :: stack)}))) ~ 
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.RequirementRefType](_, scalaxb.ElemName(node) :: stack)}))) ~ 
       optTextRecord) ^^ 
         { case p1 ~ p2 => Seq.concat(Seq(p1),
         p2.toList) }) ||| 
       ((((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "actor-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), scalaxb.fromXML[models.Actoru45refType](x, scalaxb.ElemName(node) :: stack)))) ~ 
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), scalaxb.fromXML[models.ActorRefType](x, scalaxb.ElemName(node) :: stack)))) ~ 
       optTextRecord) ^^ 
         { case p1 ~ p2 => Seq.concat(Seq(p1),
         p2.toList) }) ||| 
       ((((scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "stakeholder-ref")) ^^ 
-      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.Stakeholderu45refType](_, scalaxb.ElemName(node) :: stack)}))) ~ 
+      (x => scalaxb.DataRecord(x.namespace, Some(x.name), x.nilOption map {scalaxb.fromXML[models.StakeholderRefType](_, scalaxb.ElemName(node) :: stack)}))) ~ 
       optTextRecord) ^^ 
         { case p1 ~ p2 => Seq.concat(Seq(p1),
         p2.toList) }))
@@ -1007,7 +1007,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     
     override def writesAttribute(__obj: models.Dictionary, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
-      attr = scala.xml.Attribute(null, "model-version", __obj.modelu45version.toString, attr)
+      attr = scala.xml.Attribute(null, "model-version", __obj.modelVersion.toString, attr)
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
@@ -1120,7 +1120,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     
     override def writesAttribute(__obj: models.Glossary, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
-      attr = scala.xml.Attribute(null, "model-version", __obj.modelu45version.toString, attr)
+      attr = scala.xml.Attribute(null, "model-version", __obj.modelVersion.toString, attr)
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
@@ -1177,8 +1177,8 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
   }
 
 
-  trait ModelsReplacementu45textu45elementsu45groupGroupFormat extends scalaxb.AnyElemNameParser {
-    def parseReplacementu45textu45elementsu45groupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[scalaxb.DataRecord[Any]] =
+  trait ModelsReplacementTextElementsGroupGroupFormat extends scalaxb.AnyElemNameParser {
+    def parseReplacementTextElementsGroupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[scalaxb.DataRecord[Any]] =
       (((any(_ => true) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack)))) | 
       ((any(_ => true) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack)))) | 
       ((any(_ => true) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack)))) | 
@@ -1190,7 +1190,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
       ((any(_ => true) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack)))) | 
       ((any(_ => true) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack)))))
   
-    def parseReplacementu45textu45elementsu45groupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName], wrap: Boolean): Parser[scalaxb.DataRecord[Any]] =
+    def parseReplacementTextElementsGroupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName], wrap: Boolean): Parser[scalaxb.DataRecord[Any]] =
       (((any(_ => true) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack)))) | 
       ((any(_ => true) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack)))) | 
       ((any(_ => true) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack)))) | 
@@ -1202,7 +1202,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
       ((any(_ => true) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack)))) | 
       ((any(_ => true) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack)))))
     
-    def parsemixedReplacementu45textu45elementsu45groupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[Seq[scalaxb.DataRecord[Any]]] =
+    def parsemixedReplacementTextElementsGroupGroup(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[Seq[scalaxb.DataRecord[Any]]] =
       ((((((any(_ => true) ^^ (scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack))) ~ 
       optTextRecord) ^^ 
       { case p1 ~ p2 => Seq.concat(Seq(p1), p2.toList) }) ~ 
@@ -1291,7 +1291,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     
     override def writesAttribute(__obj: models.Requirements, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
-      attr = scala.xml.Attribute(null, "model-version", __obj.modelu45version.toString, attr)
+      attr = scala.xml.Attribute(null, "model-version", __obj.modelVersion.toString, attr)
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
@@ -1329,7 +1329,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     
     override def writesAttribute(__obj: models.Stakeholders, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
-      attr = scala.xml.Attribute(null, "model-version", __obj.modelu45version.toString, attr)
+      attr = scala.xml.Attribute(null, "model-version", __obj.modelVersion.toString, attr)
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
@@ -1341,28 +1341,28 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
 
   }
 
-  trait DefaultModelsTraceu45reportTypeFormat extends scalaxb.ElemNameParser[models.Traceu45reportType] {
+  trait DefaultModelsTraceReportTypeFormat extends scalaxb.ElemNameParser[models.TraceReportType] {
     val targetNamespace: Option[String] = Some("http://www.xml-solutions.com/xuse/trace-report")
     
     override def typeName: Option[String] = Some("trace-reportType")
 
-    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.Traceu45reportType] =
+    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.TraceReportType] =
       phrase(rep(scalaxb.ElemName(Some("http://www.xml-solutions.com/xuse/trace-report"), "artefact")) ^^
       { case p1 =>
-      models.Traceu45reportType(p1.toSeq map { scalaxb.fromXML[models.ArtefactType](_, scalaxb.ElemName(node) :: stack) },
+      models.TraceReportType(p1.toSeq map { scalaxb.fromXML[models.ArtefactType](_, scalaxb.ElemName(node) :: stack) },
         scalaxb.fromXML[String]((node \ "@created"), scalaxb.ElemName(node) :: stack),
         (node \ "@base-uri").headOption map { scalaxb.fromXML[java.net.URI](_, scalaxb.ElemName(node) :: stack) },
         scalaxb.fromXML[String]((node \ "@base-id"), scalaxb.ElemName(node) :: stack)) })
     
-    override def writesAttribute(__obj: models.Traceu45reportType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.TraceReportType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       attr = scala.xml.Attribute(null, "created", __obj.created.toString, attr)
-      __obj.baseu45uri foreach { x => attr = scala.xml.Attribute(null, "base-uri", x.toString, attr) }
-      attr = scala.xml.Attribute(null, "base-id", __obj.baseu45id.toString, attr)
+      __obj.baseUri foreach { x => attr = scala.xml.Attribute(null, "base-uri", x.toString, attr) }
+      attr = scala.xml.Attribute(null, "base-id", __obj.baseId.toString, attr)
       attr
     }
 
-    def writesChildNodes(__obj: models.Traceu45reportType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+    def writesChildNodes(__obj: models.TraceReportType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       (__obj.artefact flatMap { scalaxb.toXML[models.ArtefactType](_, Some("http://www.xml-solutions.com/xuse/trace-report"), Some("artefact"), __scope, false) })
 
   }
@@ -1383,23 +1383,23 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
         scala.xml.Null, __scope, scala.xml.Text(__obj.toString))
   }
 
-  trait DefaultModelsTraceu45toFormat extends scalaxb.XMLFormat[models.Traceu45to] with scalaxb.CanWriteChildNodes[models.Traceu45to] {
+  trait DefaultModelsTraceToFormat extends scalaxb.XMLFormat[models.TraceTo] with scalaxb.CanWriteChildNodes[models.TraceTo] {
     val targetNamespace: Option[String] = Some("http://www.xml-solutions.com/xuse/trace-report")
     import scalaxb.ElemName._
     
-    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.Traceu45to] = seq match {
-      case node: scala.xml.Node => Right(models.Traceu45to(scalaxb.fromXML[String](node, scalaxb.ElemName(node) :: stack),
+    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.TraceTo] = seq match {
+      case node: scala.xml.Node => Right(models.TraceTo(scalaxb.fromXML[String](node, scalaxb.ElemName(node) :: stack),
         (node \ "@class").headOption map { scalaxb.fromXML[models.Class](_, scalaxb.ElemName(node) :: stack) }))
       case _ => Left("reads failed: seq must be scala.xml.Node")
     }
     
-    override def writesAttribute(__obj: models.Traceu45to, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.TraceTo, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       __obj.classValue foreach { x => attr = scala.xml.Attribute(null, "class", x.toString, attr) }
       attr
     }
 
-    def writesChildNodes(__obj: models.Traceu45to, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+    def writesChildNodes(__obj: models.TraceTo, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Seq(scala.xml.Text(__obj.value.toString))
 
 
@@ -1418,7 +1418,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
       { case p1 ~ p2 ~ p3 ~ p4 =>
       models.ArtefactType(scalaxb.fromXML[String](p1, scalaxb.ElemName(node) :: stack),
         p2.headOption map { scalaxb.fromXML[String](_, scalaxb.ElemName(node) :: stack) },
-        p3.toSeq map { scalaxb.fromXML[models.Traceu45to](_, scalaxb.ElemName(node) :: stack) },
+        p3.toSeq map { scalaxb.fromXML[models.TraceTo](_, scalaxb.ElemName(node) :: stack) },
         p4.headOption map { scalaxb.fromXML[String](_, scalaxb.ElemName(node) :: stack) },
         scalaxb.fromXML[String]((node \ "@type"), scalaxb.ElemName(node) :: stack),
         (node \ "@uri").headOption map { scalaxb.fromXML[String](_, scalaxb.ElemName(node) :: stack) }) })
@@ -1433,33 +1433,33 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     def writesChildNodes(__obj: models.ArtefactType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Seq.concat(scalaxb.toXML[String](__obj.id, Some("http://www.xml-solutions.com/xuse/trace-report"), Some("id"), __scope, false),
         __obj.location map { scalaxb.toXML[String](_, Some("http://www.xml-solutions.com/xuse/trace-report"), Some("location"), __scope, false) } getOrElse {Nil},
-        __obj.traceu45to flatMap { scalaxb.toXML[models.Traceu45to](_, Some("http://www.xml-solutions.com/xuse/trace-report"), Some("trace-to"), __scope, false) },
+        __obj.traceTo flatMap { scalaxb.toXML[models.TraceTo](_, Some("http://www.xml-solutions.com/xuse/trace-report"), Some("trace-to"), __scope, false) },
         __obj.status map { scalaxb.toXML[String](_, Some("http://www.xml-solutions.com/xuse/trace-report"), Some("status"), __scope, false) } getOrElse {Nil})
 
   }
 
-  def buildModelsBuiltu45inu45artefactu45classifiersTypeFormat = new DefaultModelsBuiltu45inu45artefactu45classifiersTypeFormat {}
-  trait DefaultModelsBuiltu45inu45artefactu45classifiersTypeFormat extends scalaxb.XMLFormat[models.Builtu45inu45artefactu45classifiersType] {
+  def buildModelsBuiltInArtefactClassifiersTypeFormat = new DefaultModelsBuiltInArtefactClassifiersTypeFormat {}
+  trait DefaultModelsBuiltInArtefactClassifiersTypeFormat extends scalaxb.XMLFormat[models.BuiltInArtefactClassifiersType] {
     val targetNamespace: Option[String] = Some("http://www.xml-solutions.com/xuse/trace-report")
     
-    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.Builtu45inu45artefactu45classifiersType] = seq match {
-      case elem: scala.xml.Elem => Right(models.Builtu45inu45artefactu45classifiersType.fromString(elem.text, elem.scope))
-      case _ => Right(models.Builtu45inu45artefactu45classifiersType.fromString(seq.text, scala.xml.TopScope))
+    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.BuiltInArtefactClassifiersType] = seq match {
+      case elem: scala.xml.Elem => Right(models.BuiltInArtefactClassifiersType.fromString(elem.text, elem.scope))
+      case _ => Right(models.BuiltInArtefactClassifiersType.fromString(seq.text, scala.xml.TopScope))
     }
     
-    def writes(__obj: models.Builtu45inu45artefactu45classifiersType, __namespace: Option[String], __elementLabel: Option[String],
+    def writes(__obj: models.BuiltInArtefactClassifiersType, __namespace: Option[String], __elementLabel: Option[String],
         __scope: scala.xml.NamespaceBinding, __typeAttribute: Boolean): scala.xml.NodeSeq =
       scala.xml.Elem(scalaxb.Helper.getPrefix(__namespace, __scope).orNull, 
         __elementLabel getOrElse { sys.error("missing element label.") },
         scala.xml.Null, __scope, scala.xml.Text(__obj.toString))
   }
 
-  trait DefaultModelsUseu45caseTypeFormat extends scalaxb.ElemNameParser[models.Useu45caseType] {
+  trait DefaultModelsUseCaseTypeFormat extends scalaxb.ElemNameParser[models.UseCaseType] {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     
     override def typeName: Option[String] = Some("use-caseType")
 
-    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.Useu45caseType] =
+    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.UseCaseType] =
       phrase(rep(scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "annotation")) ~ 
       (scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "description")) ~ 
       (scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "document-history")) ~ 
@@ -1470,13 +1470,13 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
       opt(scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "business-rules")) ~ 
       rep(any(_.namespace != Some("http://xuse.sourceforge.net"))) ^^
       { case p1 ~ p2 ~ p3 ~ p4 ~ p5 ~ p6 ~ p7 ~ p8 ~ p9 =>
-      models.Useu45caseType(p1.toSeq map { scalaxb.fromXML[models.AnnotationType](_, scalaxb.ElemName(node) :: stack) },
+      models.UseCaseType(p1.toSeq map { scalaxb.fromXML[models.AnnotationType](_, scalaxb.ElemName(node) :: stack) },
         scalaxb.fromXML[models.DescriptionType](p2, scalaxb.ElemName(node) :: stack),
-        scalaxb.fromXML[models.Documentu45historyType](p3, scalaxb.ElemName(node) :: stack),
-        scalaxb.fromXML[models.Useu45caseu45propertiesType](p4, scalaxb.ElemName(node) :: stack),
+        scalaxb.fromXML[models.DocumentHistoryType](p3, scalaxb.ElemName(node) :: stack),
+        scalaxb.fromXML[models.UseCasePropertiesType](p4, scalaxb.ElemName(node) :: stack),
         scalaxb.fromXML[models.MainSequenceType](p5, scalaxb.ElemName(node) :: stack),
-        p6.headOption map { scalaxb.fromXML[models.Alternateu45flowsType](_, scalaxb.ElemName(node) :: stack) },
-        p7.headOption map { scalaxb.fromXML[models.Exceptionu45flowsType](_, scalaxb.ElemName(node) :: stack) },
+        p6.headOption map { scalaxb.fromXML[models.AlternateFlowsType](_, scalaxb.ElemName(node) :: stack) },
+        p7.headOption map { scalaxb.fromXML[models.ExceptionFlowsType](_, scalaxb.ElemName(node) :: stack) },
         p8.headOption map { scalaxb.fromXML[models.RequirementsCollectionType](_, scalaxb.ElemName(node) :: stack) },
         p9.toSeq map { scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack) },
         scalaxb.fromXML[String]((node \ "@id"), scalaxb.ElemName(node) :: stack),
@@ -1498,35 +1498,35 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
           case _ => Nil
         }): _*)) })
     
-    override def writesAttribute(__obj: models.Useu45caseType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.UseCaseType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       attr = scala.xml.Attribute(null, "id", __obj.id.toString, attr)
       attr = scala.xml.Attribute(null, "name", __obj.name.toString, attr)
-      attr = scala.xml.Attribute(null, "model-version", __obj.modelu45version.toString, attr)
+      attr = scala.xml.Attribute(null, "model-version", __obj.modelVersion.toString, attr)
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
     }
 
-    def writesChildNodes(__obj: models.Useu45caseType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+    def writesChildNodes(__obj: models.UseCaseType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Seq.concat(__obj.annotation flatMap { scalaxb.toXML[models.AnnotationType](_, Some("http://xuse.sourceforge.net"), Some("annotation"), __scope, false) },
         scalaxb.toXML[models.DescriptionType](__obj.description, Some("http://xuse.sourceforge.net"), Some("description"), __scope, false),
-        scalaxb.toXML[models.Documentu45historyType](__obj.documentu45history, Some("http://xuse.sourceforge.net"), Some("document-history"), __scope, false),
-        scalaxb.toXML[models.Useu45caseu45propertiesType](__obj.useu45caseu45properties, Some("http://xuse.sourceforge.net"), Some("use-case-properties"), __scope, false),
-        scalaxb.toXML[models.MainSequenceType](__obj.mainu45flow, Some("http://xuse.sourceforge.net"), Some("main-flow"), __scope, false),
-        __obj.alternateu45flows map { scalaxb.toXML[models.Alternateu45flowsType](_, Some("http://xuse.sourceforge.net"), Some("alternate-flows"), __scope, false) } getOrElse {Nil},
-        __obj.exceptionu45flows map { scalaxb.toXML[models.Exceptionu45flowsType](_, Some("http://xuse.sourceforge.net"), Some("exception-flows"), __scope, false) } getOrElse {Nil},
-        __obj.businessu45rules map { scalaxb.toXML[models.RequirementsCollectionType](_, Some("http://xuse.sourceforge.net"), Some("business-rules"), __scope, false) } getOrElse {Nil},
+        scalaxb.toXML[models.DocumentHistoryType](__obj.documentHistory, Some("http://xuse.sourceforge.net"), Some("document-history"), __scope, false),
+        scalaxb.toXML[models.UseCasePropertiesType](__obj.useCaseProperties, Some("http://xuse.sourceforge.net"), Some("use-case-properties"), __scope, false),
+        scalaxb.toXML[models.MainSequenceType](__obj.mainFlow, Some("http://xuse.sourceforge.net"), Some("main-flow"), __scope, false),
+        __obj.alternateFlows map { scalaxb.toXML[models.AlternateFlowsType](_, Some("http://xuse.sourceforge.net"), Some("alternate-flows"), __scope, false) } getOrElse {Nil},
+        __obj.exceptionFlows map { scalaxb.toXML[models.ExceptionFlowsType](_, Some("http://xuse.sourceforge.net"), Some("exception-flows"), __scope, false) } getOrElse {Nil},
+        __obj.businessRules map { scalaxb.toXML[models.RequirementsCollectionType](_, Some("http://xuse.sourceforge.net"), Some("business-rules"), __scope, false) } getOrElse {Nil},
         __obj.any flatMap { x => scalaxb.toXML[scalaxb.DataRecord[Any]](x, x.namespace, x.key, __scope, true) })
 
   }
 
-  trait DefaultModelsUseu45caseu45propertiesTypeFormat extends scalaxb.ElemNameParser[models.Useu45caseu45propertiesType] {
+  trait DefaultModelsUseCasePropertiesTypeFormat extends scalaxb.ElemNameParser[models.UseCasePropertiesType] {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     
     override def typeName: Option[String] = Some("use-case-propertiesType")
 
-    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.Useu45caseu45propertiesType] =
+    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.UseCasePropertiesType] =
       phrase(rep(scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "annotation")) ~ 
       (scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "trigger")) ~ 
       (scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "goal")) ~ 
@@ -1540,11 +1540,11 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
       rep(scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "taxonomy")) ~ 
       rep(any(_.namespace != Some("http://xuse.sourceforge.net"))) ^^
       { case p1 ~ p2 ~ p3 ~ p4 ~ p5 ~ p6 ~ p7 ~ p8 ~ p9 ~ p10 ~ p11 ~ p12 =>
-      models.Useu45caseu45propertiesType(p1.toSeq map { scalaxb.fromXML[models.AnnotationType](_, scalaxb.ElemName(node) :: stack) },
+      models.UseCasePropertiesType(p1.toSeq map { scalaxb.fromXML[models.AnnotationType](_, scalaxb.ElemName(node) :: stack) },
         scalaxb.fromXML[models.DescriptionType](p2, scalaxb.ElemName(node) :: stack),
         scalaxb.fromXML[models.DescriptionType](p3, scalaxb.ElemName(node) :: stack),
-        p4.toSeq map { scalaxb.fromXML[models.Actoru45refType](_, scalaxb.ElemName(node) :: stack) },
-        p5.toSeq map { scalaxb.fromXML[models.Actoru45refType](_, scalaxb.ElemName(node) :: stack) },
+        p4.toSeq map { scalaxb.fromXML[models.ActorRefType](_, scalaxb.ElemName(node) :: stack) },
+        p5.toSeq map { scalaxb.fromXML[models.ActorRefType](_, scalaxb.ElemName(node) :: stack) },
         scalaxb.fromXML[models.DescriptionType](p6, scalaxb.ElemName(node) :: stack),
         scalaxb.fromXML[models.DescriptionType](p7, scalaxb.ElemName(node) :: stack),
         scalaxb.fromXML[models.DescriptionType](p8, scalaxb.ElemName(node) :: stack),
@@ -1566,22 +1566,22 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
           case _ => Nil
         }): _*)) })
     
-    override def writesAttribute(__obj: models.Useu45caseu45propertiesType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.UseCasePropertiesType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
     }
 
-    def writesChildNodes(__obj: models.Useu45caseu45propertiesType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+    def writesChildNodes(__obj: models.UseCasePropertiesType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Seq.concat(__obj.annotation flatMap { scalaxb.toXML[models.AnnotationType](_, Some("http://xuse.sourceforge.net"), Some("annotation"), __scope, false) },
         scalaxb.toXML[models.DescriptionType](__obj.trigger, Some("http://xuse.sourceforge.net"), Some("trigger"), __scope, false),
         scalaxb.toXML[models.DescriptionType](__obj.goal, Some("http://xuse.sourceforge.net"), Some("goal"), __scope, false),
-        __obj.primaryu45actor flatMap { scalaxb.toXML[models.Actoru45refType](_, Some("http://xuse.sourceforge.net"), Some("primary-actor"), __scope, false) },
-        __obj.secondaryu45actor flatMap { scalaxb.toXML[models.Actoru45refType](_, Some("http://xuse.sourceforge.net"), Some("secondary-actor"), __scope, false) },
-        scalaxb.toXML[models.DescriptionType](__obj.preu45requisites, Some("http://xuse.sourceforge.net"), Some("pre-requisites"), __scope, false),
-        scalaxb.toXML[models.DescriptionType](__obj.successu45outcome, Some("http://xuse.sourceforge.net"), Some("success-outcome"), __scope, false),
-        scalaxb.toXML[models.DescriptionType](__obj.failureu45outcome, Some("http://xuse.sourceforge.net"), Some("failure-outcome"), __scope, false),
+        __obj.primaryActor flatMap { scalaxb.toXML[models.ActorRefType](_, Some("http://xuse.sourceforge.net"), Some("primary-actor"), __scope, false) },
+        __obj.secondaryActor flatMap { scalaxb.toXML[models.ActorRefType](_, Some("http://xuse.sourceforge.net"), Some("secondary-actor"), __scope, false) },
+        scalaxb.toXML[models.DescriptionType](__obj.preRequisites, Some("http://xuse.sourceforge.net"), Some("pre-requisites"), __scope, false),
+        scalaxb.toXML[models.DescriptionType](__obj.successOutcome, Some("http://xuse.sourceforge.net"), Some("success-outcome"), __scope, false),
+        scalaxb.toXML[models.DescriptionType](__obj.failureOutcome, Some("http://xuse.sourceforge.net"), Some("failure-outcome"), __scope, false),
         scalaxb.toXML[String](__obj.priority, Some("http://xuse.sourceforge.net"), Some("priority"), __scope, false),
         scalaxb.toXML[BigInt](__obj.complexity, Some("http://xuse.sourceforge.net"), Some("complexity"), __scope, false),
         __obj.taxonomy flatMap { scalaxb.toXML[models.TaxonomyType](_, Some("http://xuse.sourceforge.net"), Some("taxonomy"), __scope, false) },
@@ -1704,7 +1704,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     
     override def writesAttribute(__obj: models.Rejoin, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
-      attr = scala.xml.Attribute(null, "at-step", __obj.atu45step.toString, attr)
+      attr = scala.xml.Attribute(null, "at-step", __obj.atStep.toString, attr)
       attr
     }
 
@@ -1781,8 +1781,8 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
       models.StepType(p1.toSeq map { scalaxb.fromXML[models.AnnotationType](_, scalaxb.ElemName(node) :: stack) },
         scalaxb.fromXML[models.DescriptionType](p2, scalaxb.ElemName(node) :: stack),
         p3.headOption map { scalaxb.fromXML[models.ReleaseRefType](_, scalaxb.ElemName(node) :: stack) },
-        p4.toSeq map { scalaxb.fromXML[models.Refu45alternateu45flowsType](_, scalaxb.ElemName(node) :: stack) },
-        p5.toSeq map { scalaxb.fromXML[models.Refu45alternateu45flowsType](_, scalaxb.ElemName(node) :: stack) },
+        p4.toSeq map { scalaxb.fromXML[models.RefAlternateFlowsType](_, scalaxb.ElemName(node) :: stack) },
+        p5.toSeq map { scalaxb.fromXML[models.RefAlternateFlowsType](_, scalaxb.ElemName(node) :: stack) },
         p6.toSeq map { scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack) },
         scalaxb.fromXML[String]((node \ "@step-id"), scalaxb.ElemName(node) :: stack),
         scala.collection.immutable.ListMap((node match {
@@ -1801,7 +1801,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     
     override def writesAttribute(__obj: models.StepType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
-      attr = scala.xml.Attribute(null, "step-id", __obj.stepu45id.toString, attr)
+      attr = scala.xml.Attribute(null, "step-id", __obj.stepId.toString, attr)
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
@@ -1810,23 +1810,23 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
     def writesChildNodes(__obj: models.StepType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Seq.concat(__obj.annotation flatMap { scalaxb.toXML[models.AnnotationType](_, Some("http://xuse.sourceforge.net"), Some("annotation"), __scope, false) },
         scalaxb.toXML[models.DescriptionType](__obj.description, Some("http://xuse.sourceforge.net"), Some("description"), __scope, false),
-        __obj.proposedu45release map { scalaxb.toXML[models.ReleaseRefType](_, Some("http://xuse.sourceforge.net"), Some("proposed-release"), __scope, false) } getOrElse {Nil},
-        __obj.refu45alternateu45flow flatMap { scalaxb.toXML[models.Refu45alternateu45flowsType](_, Some("http://xuse.sourceforge.net"), Some("ref-alternate-flow"), __scope, false) },
-        __obj.refu45exceptionu45flow flatMap { scalaxb.toXML[models.Refu45alternateu45flowsType](_, Some("http://xuse.sourceforge.net"), Some("ref-exception-flow"), __scope, false) },
+        __obj.proposedRelease map { scalaxb.toXML[models.ReleaseRefType](_, Some("http://xuse.sourceforge.net"), Some("proposed-release"), __scope, false) } getOrElse {Nil},
+        __obj.refAlternateFlow flatMap { scalaxb.toXML[models.RefAlternateFlowsType](_, Some("http://xuse.sourceforge.net"), Some("ref-alternate-flow"), __scope, false) },
+        __obj.refExceptionFlow flatMap { scalaxb.toXML[models.RefAlternateFlowsType](_, Some("http://xuse.sourceforge.net"), Some("ref-exception-flow"), __scope, false) },
         __obj.any flatMap { x => scalaxb.toXML[scalaxb.DataRecord[Any]](x, x.namespace, x.key, __scope, true) })
 
   }
 
-  trait DefaultModelsAlternateu45flowsTypeFormat extends scalaxb.ElemNameParser[models.Alternateu45flowsType] {
+  trait DefaultModelsAlternateFlowsTypeFormat extends scalaxb.ElemNameParser[models.AlternateFlowsType] {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     
     override def typeName: Option[String] = Some("alternate-flowsType")
 
-    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.Alternateu45flowsType] =
+    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.AlternateFlowsType] =
       phrase(rep(scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "alternate-flow")) ~ 
       rep(any(_.namespace != Some("http://xuse.sourceforge.net"))) ^^
       { case p1 ~ p2 =>
-      models.Alternateu45flowsType(p1.toSeq map { scalaxb.fromXML[models.AlternateSequenceType](_, scalaxb.ElemName(node) :: stack) },
+      models.AlternateFlowsType(p1.toSeq map { scalaxb.fromXML[models.AlternateSequenceType](_, scalaxb.ElemName(node) :: stack) },
         p2.toSeq map { scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack) },
         scala.collection.immutable.ListMap((node match {
           case elem: scala.xml.Elem =>
@@ -1842,52 +1842,52 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
           case _ => Nil
         }): _*)) })
     
-    override def writesAttribute(__obj: models.Alternateu45flowsType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.AlternateFlowsType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
     }
 
-    def writesChildNodes(__obj: models.Alternateu45flowsType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
-      Seq.concat(__obj.alternateu45flow flatMap { scalaxb.toXML[models.AlternateSequenceType](_, Some("http://xuse.sourceforge.net"), Some("alternate-flow"), __scope, false) },
+    def writesChildNodes(__obj: models.AlternateFlowsType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+      Seq.concat(__obj.alternateFlow flatMap { scalaxb.toXML[models.AlternateSequenceType](_, Some("http://xuse.sourceforge.net"), Some("alternate-flow"), __scope, false) },
         __obj.any flatMap { x => scalaxb.toXML[scalaxb.DataRecord[Any]](x, x.namespace, x.key, __scope, true) })
 
   }
 
-  trait DefaultModelsRefu45alternateu45flowsTypeFormat extends scalaxb.XMLFormat[models.Refu45alternateu45flowsType] with scalaxb.CanWriteChildNodes[models.Refu45alternateu45flowsType] {
+  trait DefaultModelsRefAlternateFlowsTypeFormat extends scalaxb.XMLFormat[models.RefAlternateFlowsType] with scalaxb.CanWriteChildNodes[models.RefAlternateFlowsType] {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     import scalaxb.ElemName._
     
-    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.Refu45alternateu45flowsType] = seq match {
-      case node: scala.xml.Node => Right(models.Refu45alternateu45flowsType(scalaxb.fromXML[String]((node \ "@refId"), scalaxb.ElemName(node) :: stack),
+    def reads(seq: scala.xml.NodeSeq, stack: List[scalaxb.ElemName]): Either[String, models.RefAlternateFlowsType] = seq match {
+      case node: scala.xml.Node => Right(models.RefAlternateFlowsType(scalaxb.fromXML[String]((node \ "@refId"), scalaxb.ElemName(node) :: stack),
         scalaxb.fromXML[String]((node \ "@condition"), scalaxb.ElemName(node) :: stack)))
       case _ => Left("reads failed: seq must be scala.xml.Node")
     }
     
-    override def writesAttribute(__obj: models.Refu45alternateu45flowsType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.RefAlternateFlowsType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       attr = scala.xml.Attribute(null, "refId", __obj.refId.toString, attr)
       attr = scala.xml.Attribute(null, "condition", __obj.condition.toString, attr)
       attr
     }
 
-    def writesChildNodes(__obj: models.Refu45alternateu45flowsType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+    def writesChildNodes(__obj: models.RefAlternateFlowsType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
       Nil
 
 
   }
 
-  trait DefaultModelsExceptionu45flowsTypeFormat extends scalaxb.ElemNameParser[models.Exceptionu45flowsType] {
+  trait DefaultModelsExceptionFlowsTypeFormat extends scalaxb.ElemNameParser[models.ExceptionFlowsType] {
     val targetNamespace: Option[String] = Some("http://xuse.sourceforge.net")
     
     override def typeName: Option[String] = Some("exception-flowsType")
 
-    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.Exceptionu45flowsType] =
+    def parser(node: scala.xml.Node, stack: List[scalaxb.ElemName]): Parser[models.ExceptionFlowsType] =
       phrase(rep(scalaxb.ElemName(Some("http://xuse.sourceforge.net"), "exception-flow")) ~ 
       rep(any(_.namespace != Some("http://xuse.sourceforge.net"))) ^^
       { case p1 ~ p2 =>
-      models.Exceptionu45flowsType(p1.toSeq map { scalaxb.fromXML[models.AlternateSequenceType](_, scalaxb.ElemName(node) :: stack) },
+      models.ExceptionFlowsType(p1.toSeq map { scalaxb.fromXML[models.AlternateSequenceType](_, scalaxb.ElemName(node) :: stack) },
         p2.toSeq map { scalaxb.fromXML[scalaxb.DataRecord[Any]](_, scalaxb.ElemName(node) :: stack) },
         scala.collection.immutable.ListMap((node match {
           case elem: scala.xml.Elem =>
@@ -1903,15 +1903,15 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
           case _ => Nil
         }): _*)) })
     
-    override def writesAttribute(__obj: models.Exceptionu45flowsType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
+    override def writesAttribute(__obj: models.ExceptionFlowsType, __scope: scala.xml.NamespaceBinding): scala.xml.MetaData = {
       var attr: scala.xml.MetaData  = scala.xml.Null
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
     }
 
-    def writesChildNodes(__obj: models.Exceptionu45flowsType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
-      Seq.concat(__obj.exceptionu45flow flatMap { scalaxb.toXML[models.AlternateSequenceType](_, Some("http://xuse.sourceforge.net"), Some("exception-flow"), __scope, false) },
+    def writesChildNodes(__obj: models.ExceptionFlowsType, __scope: scala.xml.NamespaceBinding): Seq[scala.xml.Node] =
+      Seq.concat(__obj.exceptionFlow flatMap { scalaxb.toXML[models.AlternateSequenceType](_, Some("http://xuse.sourceforge.net"), Some("exception-flow"), __scope, false) },
         __obj.any flatMap { x => scalaxb.toXML[scalaxb.DataRecord[Any]](x, x.namespace, x.key, __scope, true) })
 
   }
@@ -1970,7 +1970,7 @@ trait XMLProtocol extends scalaxb.XMLStandardTypes {
       __obj.xpointer foreach { x => attr = scala.xml.Attribute(null, "xpointer", x.toString, attr) }
       __obj.encoding foreach { x => attr = scala.xml.Attribute(null, "encoding", x.toString, attr) }
       __obj.accept foreach { x => attr = scala.xml.Attribute(null, "accept", x.toString, attr) }
-      __obj.acceptu45language foreach { x => attr = scala.xml.Attribute(null, "accept-language", x.toString, attr) }
+      __obj.acceptLanguage foreach { x => attr = scala.xml.Attribute(null, "accept-language", x.toString, attr) }
       __obj.attributes.toList map {
         case (key, x) => attr = scala.xml.Attribute((x.namespace map { __scope.getPrefix(_) }).orNull, x.key.orNull, x.value.toString, attr) }
       attr
